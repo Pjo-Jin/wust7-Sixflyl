@@ -1,4 +1,5 @@
 # 项目名称：火车票管理系统<br>
+![avatar](http://chuantu.biz/t5/125/1499153691x2890171875.jpg)
 # 项目组名：sixflyl <br>
 # 项目成员：
  - 彭瑾   Pjo-Jin
@@ -7,11 +8,9 @@
  - 田振民  tianzhenmin
  - 刘雯雯  Yukilia
 
-
 # 项目运行环境
  - windows+
- 
- 
+  
 # 项目需求分析：<br>
  - 列车管理员：<br>
 ①添加运行车次、删除车次，修改车次（修改出发时间）；<br>
