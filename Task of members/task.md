@@ -1,39 +1,40 @@
 # 7月4日每人任务分配<br>
 
 <table border="1" class="table" cellpadding="0" cellspacing="0" >
-  <th  width="100px"}>姓名</th>
+  <th  width="200px"}>姓名</th>
   <th  width="200px">ID</th>
-  <th  width="400px">分工</th>
+  <th  width="1000px">分工</th>
  
   <tr align="center">
     <td>彭瑾</td>
     <td>Pjo-Jin</td>
-    <td></td>
-  </tr>
-
-  <tr align="center">
-    <td>庞尚林</td>
-    <td>sonlink</td>
-    <td>??</td>
-  </tr>
-
-  <tr align="center">
-    <td>余典</td>
-    <td>YD12138</td>
-    <td>??</td>
-  </tr>
-
-  <tr align="center">
-    <td>田振民</td>
-    <td>tianzhenmin</td>
-    <td>??</td>
+    <td>赶上各组平均进度</td>
   </tr>
 
   <tr align="center">
     <td>刘雯雯</td>
     <td>Yukilia</td>
-    <td>??</td>
+    <td>完善登录模块界面设计</td>
   </tr>
+
+  <tr align="center">
+    <td>庞尚林</td>
+    <td>sonlink</td>
+    <td>完善注册部分的功能需求分析</td>
+  </tr>
+
+  <tr align="center">
+    <td>余典</td>
+    <td>YD12138</td>
+    <td>进一步完善原型中登录模块的客户端验证</td>
+  </tr>
+
+  <tr align="center">
+    <td>田振民</td>
+    <td>tianzhenmin</td>
+    <td>进一步完善原型中登录模块的客户端验证</td>
+  </tr>
+
 </table>
 
 
