@@ -7,7 +7,7 @@
  - 田振民  tianzhenmin
  - 刘雯雯  Yukilia
 
-# 运行环境
+# 设计环境及工具
  - windows+eclipse
  
 # 功能简介
