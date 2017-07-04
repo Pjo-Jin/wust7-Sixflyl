@@ -1,11 +1,5 @@
 # 7月4日每人任务分配<br>
 
-
-<style>
-  table.table{
-    border:1px #DCDCDC;
-  }
-</style>
 <table border="1" class="table" cellpadding="0" cellspacing="0" >
   <th  width="100px"}>姓名</th>
   <th  width="200px">ID</th>
