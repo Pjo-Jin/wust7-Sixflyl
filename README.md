@@ -1,5 +1,6 @@
 # 项目名称：火车票管理系统<br>
 ![avatar](http://chuantu.biz/t5/125/1499155771x1035452427.jpg)<br>
+
 # 项目成员：
  - 彭瑾   Pjo-Jin
  - 庞尚林 sonlink
