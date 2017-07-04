@@ -1,14 +1,14 @@
-#项目名称：wust7-Sixflyl
-#项目组名：sixfly
-#项目成员：
+# 项目名称：wust7-Sixflyl<br>
+# 项目组名：sixflyl <br>
+# 项目成员：
  - 彭瑾   Pjo-Jin
  - 庞尚林 sonlink
  - 余典  YD12138
  - 田振民  tianzhenmin
  - 刘雯雯  Yukilia
-              
+               
 
-#项目名称：火车票管理系统
+#项目名称：火车票管理系统<br>
 
 #项目概述：
 1.系统描述<br>
