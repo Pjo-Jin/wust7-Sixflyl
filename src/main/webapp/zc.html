@@ -4,7 +4,39 @@
 		<meta charset="UTF-8">
 		<title>注册</title>
 		<link rel="stylesheet" type="text/css" href="./css/login.css"/>
-		<script type="text/javascript" src="./js/login.js"></script>
+		<!-- <script type="text/javascript" src="./js/login.js"></script> -->
+		
+		<script type="text/javascript">
+		function loadXMLDoc(event)
+		{
+			debugger;
+			event.preventDefault(); 
+			console.log(event)
+			//debugger;
+			var xmlhttp;
+			if (window.XMLHttpRequest)
+			 {// code for IE7+, Firefox, Chrome, Opera, Safari
+					 xmlhttp=new XMLHttpRequest();
+			 }
+			else
+			 {// code for IE6, IE5
+				 xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+			 }
+			xmlhttp.onreadystatechange=function()
+			 {
+				if (xmlhttp.readyState==4 && xmlhttp.status==200)
+				 {
+					document.getElementById("myDiv").innerHTML=JSON.parse(xmlhttp.responseText).message;
+				 }
+			 }
+			
+			var u = document.getElementById("username");
+			var p = document.getElementById("password");
+			xmlhttp.open("GET","/wust7_sixfly/Test?username="+u.value+"&password="+p.value,true);
+			xmlhttp.send();
+		}
+		</script>
+		
 	</head>
 	<body>
 		<div id="append"></div>
@@ -22,9 +54,12 @@
 						</div>
 					  <div class="co"> 
                         <div class="form">
-                        <form id="register_form" method="post" action="">
+                        <form id="register_form" method="post">
+                                <div id="myDiv" class="login-btn">
+                                   
+                                </div> 
                             <div class="item">
-                                <input placeholder="请输入用户名（必须是由4-20个英文或数字字符串组成）" class="itxt"id="username" name="username" value="" onblur="check1()" >
+                                <input placeholder="请输入用户名（必须是由4-20个英文或数字字符串组成）" class="itxt" id="username" name="username" value="" onblur="check1()" >
                                 <div class="err_box">
                                     <div class="err_msg2" style="display: show; color:red " id="error_name">
 									</div>
@@ -52,10 +87,9 @@
                                     <div class="err_msg2" style="display: none;" id="error_captcha">请输入右侧验证码</div>
                                 </div>
                             </div>-->
-                            <div class="item item5">
-                                <div class="login-btn">
-                                    <a id="loginsubmit" tabindex="7" class="btn-img btn-entry" href="register_succeseed.html">立即注册</a>
-                                </div>
+                            <div class="item item5">                               
+                                     <button type="button" class="reg_button" onclick="loadXMLDoc(event)" >立即注册</button>
+                             </div>    
                                 <div class="agree">
                                     <input class="jdcheckbox" tabindex="8" name="agree" id="agree" checked="checked" type="checkbox">
                                     <label for="autoLogin">注册即表示同意系统<span><a href="" target="_blank">《用户服务协议》</a></span>条款</label>
@@ -68,14 +102,14 @@
 				</div>
 			</div>
 		</div>
-
+ 
 <script>
    function check1(){
      var u = document.getElementById("username");
-     var reg = /^[a-zA-Z0-9]{4,20}$/;
+     var reg = /^[a-zA-Z0-9]{4,16}$/;
      if(!reg.test(u.value))
      {
-       document.getElementById("error_name").innerHTML="用户名必须是长度位4-20的英文或数字字符串";
+       document.getElementById("error_name").innerHTML="用户名必须是长度位4-16的英文或数字字符串";
      }
      else
      {

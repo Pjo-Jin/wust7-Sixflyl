@@ -152,10 +152,10 @@
 
 function check1(){
   var u = document.getElementById("username");
-  var reg = /^[a-zA-Z][a-zA-Z\u4E00-\u9FA5]{5,17}$/;
+  var reg = /^[a-zA-Z0-9]{4,16}$/;
   if(!reg.test(u.value))
   {
-    document.getElementById("error").innerHTML="用户名必须是长度位6-18的英文字符串";
+    document.getElementById("error").innerHTML="用户名必须是长度位4-16的英文或数字字符串";
   }
   else
   {
@@ -165,10 +165,10 @@ function check1(){
 
 function check2(){
   var p = document.getElementById("password");
-  var reg1 = /^[a-zA-Z0-9]{6,20}$/;
+  var reg1 = /^[a-zA-Z0-9]{4,20}$/;
   if(!reg1.test(p.value))
   {
-    document.getElementById("error1").innerHTML="密码必须是长度位6-20的英文或数字字符串";
+    document.getElementById("error1").innerHTML="密码必须是长度位4-20的英文或数字字符串";
   }
   else
   {
