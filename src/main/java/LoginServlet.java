@@ -34,20 +34,33 @@ public class LoginServlet extends HttpServlet {
 		response.setContentType("text/html");
 		PrintWriter out = response.getWriter();
 		
+		
 		String us=request.getParameter("username");
 		String ps=request.getParameter("password");
+		String cs=request.getParameter("code");
+		
 		Gson gson = new GsonBuilder().create();		
-		BizResult br=new BizResult();		
+		BizResult br=new BizResult();
+		
 		br.setStatus(0);
 		br.setUrl("aaaa");
+		
+		String Msg=(String)request.getSession().getAttribute("character");
+		request.getSession().removeAttribute("character");
 		
 		if((us!="")&&(ps!=""))
 		{
 			if((us.equals("register"))&&(ps.equals("register")))
-				br.setMessage(us+"用户登录成功");
+			{
+				if(cs.equals(Msg))
+					 br.setMessage(us+"用户登录成功");
+				else br.setMessage("验证码输入错误");
+			}				
 			else
 			{
-				br.setMessage(us+"用户名或密码不正确");				
+				if(cs.equals(Msg))
+				    br.setMessage(us+"用户名、密码不正确");	
+				else  br.setMessage(us+"用户名或密码及验证码均不正确");
 			}				
 		
 		}			

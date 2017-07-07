@@ -50,7 +50,6 @@ public class RegisterServlet extends HttpServlet {
 			else
 			{
 				br.setMessage(us+"用户注册成功，我是直接请求html页面返回的文字！");
-				
 			}				
 		
 		}			
