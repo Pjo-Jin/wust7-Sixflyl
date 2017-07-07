@@ -4,7 +4,7 @@
 		<meta charset="UTF-8">
 		<title>注册</title>
 		<link rel="stylesheet" type="text/css" href="./css/login.css"/>
-		<!-- <script type="text/javascript" src="./js/login.js"></script> -->
+		<script type="text/javascript" src="./js/login.js"></script>
 		
 		<script type="text/javascript">
 		function loadXMLDoc(event)
@@ -32,7 +32,7 @@
 			
 			var u = document.getElementById("username");
 			var p = document.getElementById("password");
-			xmlhttp.open("GET","/wust7_sixfly/Test?username="+u.value+"&password="+p.value,true);
+			xmlhttp.open("GET","/wust7_sixfly/RegisterServlet?username="+u.value+"&password="+p.value,true);
 			xmlhttp.send();
 		}
 		</script>

@@ -145,6 +145,8 @@ a:link{
     width: 367px;
 	
     height: 500px;
+    
+    background:rgba(255,255,255,0.3);
 	
    // background: url(./../image/login_icon_list.png) 0 -115px no-repeat;
 }

@@ -6,6 +6,37 @@
 	<link rel="stylesheet" type="text/css" href="./css/login.css"/>
 	<script type="text/javascript" src="./js/login.js"></script>
 	
+	<script type="text/javascript">
+		function loadXMLDoc(event)
+		{
+			debugger;
+			event.preventDefault(); 
+			console.log(event)
+			//debugger;
+			var xmlhttp;
+			if (window.XMLHttpRequest)
+			 {// code for IE7+, Firefox, Chrome, Opera, Safari
+					 xmlhttp=new XMLHttpRequest();
+			 }
+			else
+			 {// code for IE6, IE5
+				 xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+			 }
+			xmlhttp.onreadystatechange=function()
+			 {
+				if (xmlhttp.readyState==4 && xmlhttp.status==200)
+				 {
+					document.getElementById("myDiv").innerHTML=JSON.parse(xmlhttp.responseText).message;
+				 }
+			 }
+			
+			var u = document.getElementById("username");
+			var p = document.getElementById("password");
+			xmlhttp.open("GET","/wust7_sixfly/LoginServlet?username="+u.value+"&password="+p.value,true);
+			xmlhttp.send();
+		}
+		</script>
+	
     </head>
     <body>
 	<div id="append"></div>
@@ -24,6 +55,7 @@
 			<div class="co">
 			    <div class="from">
 				<form id="" action="" method="post">
+					<div id="myDiv"> </div>
 				    <div class="item">
 					                    <input class="itxt" id="username" name="username" placeholder="请输入用户名/注册名" value="" onblur="check1()" >
 			         	                <div class="err_box">
@@ -62,9 +94,9 @@
 					</div>
 				    </div>
 				    <div class="item">
-					<div class="login-btn">
-                                            <a tabindex="6" id="loginsubmit" class="btn-img btn-entry" href="offical.html">立即登录</a>
-                                       </div>
+						<div class="login-btn">      
+                        	<button type="button" class="reg_button" onclick="loadXMLDoc(event)" >立即登录</button>
+                        </div>
 				    </div>
 				</form>
 			    </div>
