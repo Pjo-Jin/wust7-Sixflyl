@@ -27,6 +27,7 @@
 				if (xmlhttp.readyState==4 && xmlhttp.status==200)
 				 {
 					alert(JSON.parse(xmlhttp.responseText).message);
+					window.location.href=JSON.parse(xmlhttp.responseText).url;
 				 }
 			 }
 			
@@ -143,8 +144,5 @@
      }
    }
 </script>
-
-
-
 	</body>
 </html>

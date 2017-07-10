@@ -1,5 +1,3 @@
-
-
 import java.io.IOException;
 import java.io.PrintWriter;
 
@@ -11,6 +9,9 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+
+import DAO.User;
+import DAO.UserDAO;
 
 /**
  * Servlet implementation class RegisterServlet
@@ -32,8 +33,11 @@ public class RegisterServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		User user=new User();
+		UserDAO userdao=new UserDAO();
 		response.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html");
+		String path = request.getContextPath();
 		PrintWriter out = response.getWriter();
 		
 		String us=request.getParameter("username");
@@ -44,14 +48,27 @@ public class RegisterServlet extends HttpServlet {
 		br.setUrl("aaaa");
 		
 		if((us!="")&&(ps!=""))
-		{
-			if(us.equals("register"))
+		{			
+			if(userdao.isUsernameExists(us))
+			{
 				br.setMessage("该用户名已被其他人注册，请重新输入：");
+				br.setUrl(path+"/zc.html");
+			}				
 			else
 			{
-				br.setMessage(us+"用户注册成功，我是直接请求html页面返回的文字！");
+				user.setUsername(us);
+				user.setPassword(ps);
+				if(userdao.addUser(user))
+				{
+					br.setMessage(us+"用户注册成功");
+					br.setUrl(path+"/login1.html");
+				}				  
+				else 
+				{
+					br.setMessage("用户注册失败");
+					br.setUrl(path+"/zc.html");
+				}
 			}				
-		
 		}			
 		else  br.setMessage("用户名或密码不能为空：");
 		

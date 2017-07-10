@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServletResponse;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
+import DAO.UserDAO;
+
 /**
  * Servlet implementation class LoginServlet
  */
@@ -30,10 +32,11 @@ public class LoginServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		UserDAO userdao=new UserDAO();
+		
 		response.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html");
-		PrintWriter out = response.getWriter();
-		
+		PrintWriter out = response.getWriter();		
 		
 		String us=request.getParameter("username");
 		String ps=request.getParameter("password");
@@ -50,7 +53,7 @@ public class LoginServlet extends HttpServlet {
 		
 		if((us!="")&&(ps!=""))
 		{
-			if((us.equals("register"))&&(ps.equals("register")))
+			if(userdao.findUser(us,ps))
 			{
 				if(cs.equals(Msg))
 					 br.setMessage(us+"用户登录成功");
@@ -61,13 +64,13 @@ public class LoginServlet extends HttpServlet {
 				if(cs.equals(Msg))
 				    br.setMessage(us+"用户名、密码不正确");	
 				else  br.setMessage(us+"用户名或密码及验证码均不正确");
-			}				
-		
+			}			
 		}			
-		else  br.setMessage("用户名或密码不能为空：");
+		else  br.setMessage("用户名或密码不能为空!");
 		
 		String result = gson.toJson(br);
 		out.println(result);
+		userdao.close();
 		out.flush();
 		out.close();  
 	}
