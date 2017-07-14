@@ -1,5 +1,9 @@
+
+
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -10,20 +14,20 @@ import javax.servlet.http.HttpServletResponse;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
-import dao.User;
-import dao.UserDAO;
+import dao.Ticket;
+import dao.TicketDAO;
 
 /**
- * Servlet implementation class RegisterServlet
+ * Servlet implementation class ChangeServlet
  */
-@WebServlet("/RegisterServlet")
-public class RegisterServlet extends HttpServlet {
+@WebServlet("/ChangeServlet.do")
+public class ChangeServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public RegisterServlet() {
+    public ChangeServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -33,55 +37,26 @@ public class RegisterServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		User user=new User();
-		UserDAO userdao=new UserDAO();
+		TicketDAO ticketdao=new TicketDAO();
+		List<Ticket> list=new ArrayList<Ticket>();
+		String path=request.getContextPath();		
 		response.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html");
-		String path = request.getContextPath();
 		PrintWriter out = response.getWriter();
 		
-		String us=request.getParameter("username");
-		String ps=request.getParameter("password");
 		Gson gson = new GsonBuilder().create();		
-		BizResult br=new BizResult();		
-		br.setStatus(0);
-		br.setUrl("aaaa");
+		BizResult br=new BizResult();
 		
-		if((us!="")&&(ps!=""))
-		{			
-			if(userdao.isUsernameExists(us))
-			{
-				br.setMessage("该用户名已被其他人注册，请重新输入：");
-				br.setUrl(path+"/zc.html");
-			}				
-			else
-			{
-				user.setUsername(us);
-				user.setPassword(ps);
-				if(userdao.addUser(user))
-				{
-					br.setMessage(us+"用户注册成功");
-					br.setUrl(path+"/login1.html");
-				}				  
-				else 
-				{
-					br.setMessage("用户注册失败");
-					br.setUrl(path+"/zc.html");
-				}
-			}				
-		}			
-		else  
-		{
-			br.setMessage("用户名或密码不能为空：");
-			br.setUrl(path+"/zc.html");
-		}
+		list=ticketdao.findAllTicket();
+		br.setMessage("changServelt");
+		br.setList1(list);	
 		
 		String result = gson.toJson(br);
 		out.println(result);
-		userdao.close();
+		//response.sendRedirect(path+"/change-ticket.html");
+		ticketdao.close();
 		out.flush();
 		out.close();  
-
 	}
 
 	/**

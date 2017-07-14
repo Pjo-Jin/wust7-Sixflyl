@@ -1,26 +1,16 @@
-package DAO;
+package dao;
+
 
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class UserDAO {
-	public static final String DRIVER="org.gjt.mm.mysql.Driver";
-	public static final String DBURL="jdbc:mysql://localhost:3306/testdb";
-	public static final String DBUSER="root";
-	public static final String DBPASS="sonlink";
 	private Connection conn=null;
 	private PreparedStatement pStat=null;
 	private ResultSet rs=null;
 	
-	public Connection getConnectionn(){
-		try{
-			Class.forName(DRIVER).newInstance();
-			return DriverManager.getConnection(DBURL,DBUSER,DBPASS);
-		}catch(Exception e){
-			e.printStackTrace();
-			return null;
-		}
-	}
-	
+	private SQL sql=new SQL();
 	
 	public void close(){
 		try{
@@ -32,7 +22,7 @@ public class UserDAO {
 	
 	
 	public boolean isUsernameExists(String username) {
-		conn=getConnectionn();
+		conn=sql.getConnectionn();
 		try {
 			pStat =conn.prepareStatement("select * from users where username=?");
 			pStat.setString(1, username);
@@ -50,7 +40,7 @@ public class UserDAO {
 	
 	
 	public boolean findUser(String username, String password){
-		conn=getConnectionn();
+		conn=sql.getConnectionn();
 		try {
 			pStat =conn.prepareStatement("select * from users where username=? and password=?");
 			pStat.setString(1, username);
@@ -71,7 +61,7 @@ public class UserDAO {
 	
 	
 	public boolean addUser(User user) {
-		conn=getConnectionn();
+		conn=sql.getConnectionn();
 		try {
 			pStat=conn.prepareStatement("insert into users values(null,?,?)");
 			pStat.setString(1, user.getUsername());
@@ -89,5 +79,32 @@ public class UserDAO {
 			close();
 		}
 	 } //end add
+	
+	public List<User> findAllUser(){
+		List<User> list=new ArrayList<User>();
+		conn=sql.getConnectionn();
+		try {
+			pStat =conn.prepareStatement("select * from users");
+			rs=pStat.executeQuery();	
+						
+			while( rs.next() ) 
+			{
+				User user=new User();
+				user.setId(rs.getInt("id"));
+				user.setUsername(rs.getString("username"));
+				user.setPassword(rs.getString("password"));
+				list.add(user);				
+			}
+			return list;
+		}
+		catch (Exception e) 
+		{
+			e.printStackTrace();
+			return null; 
+		}
+		finally{
+			close();
+		}
+	} //end QueryAll	
 	
 } //end class
