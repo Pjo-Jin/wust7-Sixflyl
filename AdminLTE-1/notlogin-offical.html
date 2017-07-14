@@ -1,0 +1,2546 @@
+<!DOCTYPE html>
+<!--
+This is a starter template page. Use this page to start your new project from
+scratch. This page gets rid of all links and provides the needed markup only.
+-->
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>小黄牛车票网</title>
+  <!-- Tell the browser to be responsive to screen width -->
+  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+  <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.min.css">
+  <!-- Ionicons -->
+  <link rel="stylesheet" href="bower_components/Ionicons/css/ionicons.min.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="dist/css/AdminLTE.min.css">
+  <!-- AdminLTE Skins. We have chosen the skin-blue for this starter
+        page. However, you can choose any other skin. Make sure you
+        apply the skin class to the body tag so the changes take effect. -->
+  <link rel="stylesheet" href="dist/css/skins/skin-blue.css">
+
+  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  <!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+  <![endif]-->
+
+  <!-- Google Font -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+
+  <script type="text/javascript" src="jquery.min.js"></script>
+
+<style>
+  
+    body{
+  font-size:12px;
+
+    }
+
+    .box{
+      background: rgba(255,255,255,0.3);
+
+    }
+
+    .box li{
+      background: rgba(0,0,0,0);
+    }
+
+    .box-footer{
+      background: rgba(0,0,0,0);
+    }
+
+    
+    .list_tab{
+  
+        display:flex;
+        font-size:20px;
+        margin:0px;
+    }
+    .list_tab li{
+        display:block;
+        margin:5px;
+    }
+
+    .list_tab a{
+      font-size: 12px;
+      margin-top:10px;
+    }
+    dl{
+        border:1px solid #DCDC12;
+        display:inline-block;
+        width:170px;
+        line-height:1em;
+
+    }
+    dl:hover{
+        background-color:orange;
+    }
+
+    dl dt{
+      display:inline-block;
+      text-align: center;
+    }
+
+    dl dd{
+        margin:left:0px;
+        display:inline-block;
+    }
+    
+    dd dfn{
+        font-size:15px;
+        color:red;
+    }
+
+    dd span{
+      font-size:20px;
+      
+      color:red
+    }
+
+    a{
+      text-decoration:none;
+    }
+    .train_list{
+      text-align: center;
+    }
+    .train_list_from{
+        color:#DCDCDC;
+    }
+    .train_list_to{
+        color:black;
+    }
+    .train_box_guide{
+        margin-left: 15px;
+        margin-right: 15px;
+        border:1px solid black;
+        border-radius: 4px;
+        background: rgba(255,255,255,0.3);
+
+         }
+</style>
+
+<script>
+  var acid;
+    function showMenuBlock(cid) {
+        $("li.page_g[cid=" + cid + "]").css("background-color", "#ecf0f5");
+        $("li.page_g[cid=" + cid + "] a").css("color", "#87CEFA");
+        $("div.train_list[cid=" + cid + "]").show();
+    }
+    function hideMenuBlock(cid) {
+        $("li.page_g[cid=" + cid + "]").css("background-color", "#fff");
+        $("li.page_g[cid=" + cid + "] a").css("color", "#fff");
+        $("div.train_list[cid=" + cid + "]").hide();
+    }
+    $(function () {
+        $("li.page_g").mouseenter(function () {
+            var cid = $(this).attr("cid");
+            hideMenuBlock(1);
+            hideMenuBlock(acid);
+            showMenuBlock(cid);
+        });
+        $("li.page_g").mouseleave(function () {
+            var cid = $(this).attr("cid");
+            acid = cid;
+        });
+       
+        
+        $("div.categoryMenu").css("left", left - 20);
+        $("div.categoryWithCarousel div.head").css("margin-left", 180);
+        $("div.productsAsideCategorys").css("left", left - 20);
+    });
+
+
+    $("button").click(function(){
+        $("img").attr("width","180");
+    });
+</script>
+
+</head>
+
+
+<!--
+BODY TAG OPTIONS:
+=================
+Apply one or more of the following classes to get the
+desired effect
+|---------------------------------------------------------|
+| SKINS         | skin-blue                               |
+|               | skin-black                              |
+|               | skin-purple                             |
+|               | skin-yellow                             |
+|               | skin-red                                |
+|               | skin-green                              |
+|---------------------------------------------------------|
+|LAYOUT OPTIONS | fixed                                   |
+|               | layout-boxed                            |
+|               | layout-top-nav                          |
+|               | sidebar-collapse                        |
+|               | sidebar-mini                            |
+|---------------------------------------------------------|
+-->
+<body class="hold-transition skin-blue sidebar-mini">
+<div class="wrapper">
+
+  <!-- Main Header -->
+  <header class="main-header">
+
+    <!-- Logo -->
+    <a href="notlogin-offical.html" class="logo">
+      <!-- mini logo for sidebar mini 50x50 pixels -->
+      <span class="logo-mini"><b>C</b>RA</span>
+      <!-- logo for regular state and mobile devices -->
+      <span class="logo-lg"><b>小黄牛车票网</b></span>
+    </a>
+
+    <!-- Header Navbar -->
+    <nav class="navbar navbar-static-top" role="navigation">
+      <!-- Sidebar toggle button-->
+      <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
+        <span class="sr-only">Toggle navigation</span>
+      </a>
+      <!-- Navbar Right Menu -->
+      <div class="navbar-custom-menu">
+        <ul class="nav navbar-nav">
+          <!-- Messages: style can be found in dropdown.less-->
+          
+
+          <!-- Notifications Menu -->
+          
+          <!-- Tasks Menu -->
+          
+          <!-- User Account Menu -->
+          <li class="dropdown user user-menu">
+            <!-- Menu Toggle Button -->
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+              <!-- The user image in the navbar-->
+              <img src="nli-icon.png" class="user-image" alt="User Image">
+              <!-- hidden-xs hides the username on small devices so only the image appears. -->
+              <span class="hidden-xs">我的</span>
+            </a>
+            <ul class="dropdown-menu">
+              <!-- The user image in the menu -->
+              <li class="user-header">
+                <img src="nli-icon.png" class="img-circle" alt="User Image">
+
+                <p>
+                  <small>状态：未登录</small>
+
+                </p>
+              </li>
+              <!-- Menu Body -->
+              <li class="user-body">
+                <!-- /.row -->
+              </li>
+              <!-- Menu Footer-->
+              <li class="user-footer">
+                <div class="pull-left">
+                  <a href="login1.html" class="btn btn-default btn-flat">登录</a>
+                </div>
+                <div class="pull-right">
+                  <a href="zc.html" class="btn btn-default btn-flat">注册</a>
+                </div>
+              </li>
+            </ul>
+          </li>
+          <!-- Control Sidebar Toggle Button -->
+          <li>
+            <a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+  <!-- Left side column. contains the logo and sidebar -->
+  <aside class="main-sidebar">
+
+    <!-- sidebar: style can be found in sidebar.less -->
+    <section class="sidebar">
+
+      <!-- Sidebar user panel (optional) -->
+      <div class="user-panel">
+        <div class="pull-left image">
+          <img src="nli-icon.png" class="img-circle" alt="User Image">
+        </div>
+        <div class="pull-left info">
+          <p></p>
+          <!-- Status -->
+          <font size="1" color="black" >离线</font> 
+        </div>
+      </div>
+
+      <!-- search form (Optional) -->
+      <form action="#" method="get" class="sidebar-form">
+        <div class="input-group">
+          <input type="text" name="q" class="form-control" placeholder="Search...">
+          <span class="input-group-btn">
+              <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i>
+              </button>
+            </span>
+        </div>
+      </form>
+      <!-- /.search form -->
+
+      <!-- Sidebar Menu -->
+      <ul class="sidebar-menu" data-widget="tree">
+        <li class="header">服务</li>
+        <!-- Optionally, you can add icons to the links -->
+       <li class="treeview">
+          <a href="#"><i class="fa fa-link"></i> <span>查询</span>
+            <span class="pull-right-container">
+                <i class="fa fa-angle-left pull-right"></i>
+              </span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="#">按车次查询</a></li>
+            <li><a href="#">按出发地/目的地查询</a></li>
+          </ul>
+        </li>
+        <li class="active"><a href="nli-limit.html"><i class="fa fa-link"></i> <span>购票</span></a></li>
+        <li class="active"><a href="nli-limit.html"><i class="fa fa-link"></i> <span>改签</span></a></li>
+        <li class="active"><a href="nli-limit.html"><i class="fa fa-link"></i> <span>退票</span></a></li>
+        <li class="active"><a href="#"><i class="fa fa-link"></i> <span>我的保险</span></a></li>
+        <li class="active"><a href="#"><i class="fa fa-link"></i> <span>客运营业站站点</span></a></li>
+        <li class="active"><a href="#"><i class="fa fa-link"></i> <span>客票代售点查询</span></a></li>
+        
+      </ul>
+      <!-- /.sidebar-menu -->
+    </section>
+    <!-- /.sidebar -->
+  </aside>
+
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <h1>
+        首页
+        <small>小黄牛车票购票中心</small>
+      </h1>
+      <br/>
+      <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> 选项</a></li>
+        <li class="active">Here</li>
+      </ol>
+    </section>
+
+    <!-- Main content -->
+    <section class="content container-fluid">
+
+      <!--------------------------
+        | Your Page Content Here |
+        -------------------------->
+          <div class="box box-primary">
+            <div class="box-header">
+
+              <h3 class="box-title">最新动态</h3>
+
+              <div class="box-tools pull-right">
+               
+              </div>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body">
+              <!-- See dist/js/pages/dashboard.js to activate the todoList plugin -->
+              <ul class="todo-list">
+                <li>
+                  <!-- drag handle -->
+                  <span class="handle">
+                        <i class="fa fa-ellipsis-v"></i>
+                        <i class="fa fa-ellipsis-v"></i>
+                   </span>
+
+                  <a href="#"><span class="text">公告</span></a>
+
+                </li>
+                <li>
+                      <span class="handle">
+                        <i class="fa fa-ellipsis-v"></i>
+                        <i class="fa fa-ellipsis-v"></i>
+                      </span>
+
+                  <a href="#"><span class="text">上海铁路局关于2017年9月1日起部分旅客列车临时停运的公告</span></a>
+
+                </li>
+                <li>
+                      <span class="handle">
+                        <i class="fa fa-ellipsis-v"></i>
+                        <i class="fa fa-ellipsis-v"></i>
+                      </span>
+
+                  <a href="#"><span class="text">成都铁路局关于部分旅客列车因六安站施工调整停站的公告</span></a>
+
+                </li>
+                <li>
+                      <span class="handle">
+                        <i class="fa fa-ellipsis-v"></i>
+                        <i class="fa fa-ellipsis-v"></i>
+                      </span>
+
+                  <a href="#"><span class="text">关于调整互联网起售时间的公告</span></a>
+
+                </li>
+                <li>
+                      <span class="handle">
+                        <i class="fa fa-ellipsis-v"></i>
+                        <i class="fa fa-ellipsis-v"></i>
+                      </span>
+
+                  <a href="#"><span class="text">武汉铁路局关于2017年7月8日部分旅客列车区段停运的公告</span></a>
+
+                </li>
+                <li>
+                      <span class="handle">
+                        <i class="fa fa-ellipsis-v"></i>
+                        <i class="fa fa-ellipsis-v"></i>
+                      </span>
+
+                  <a href="#"><span class="text">上海铁路局关于2017年7月10日-7月31日增开部分旅客列车的公告</span></a>
+
+                </li>
+              </ul>
+               <div class="box-footer clearfix no-border">
+                 <button type="button" class="btn btn-default pull-right"><i class="fa fa-plus"></i> 浏览更多</button>
+              </div>
+
+            </div>
+            
+          </div>
+          <!-- /.box -->
+
+		   <section class="train_box_guide">
+      
+
+<div class="train_box">
+                    <h3 title="高铁网上订票官网">热门高铁网上订票</h3>
+                    <ul class="list_tab">
+                        <li cid="1" class="page_g"><label>北京</label></li>
+                        <li cid="2" class="page_g"><label>上海</label></li>
+                        <li cid="3" class="page_g"><label>广州</label></li>
+                        <li cid="4" class="page_g"><label>天津</label></li>
+                        <li cid="5" class="page_g"><label>厦门</label></li>
+                        <li cid="6" class="page_g"><label>武汉</label></li>
+                        <li cid="7" class="page_g"><label>杭州</label></li>
+                        <a href="http://gaotie.tieyou.com/" class="list_more" target="_blank">更多>></a>
+                    </ul>
+                    
+
+<div class="train_list " cid="7" style="display: none;">
+                        <dl>
+              <a href="http://www.tieyou.com/daigou/hangzhoudong-zhengzhou.html" target="_blank">
+                <dt>
+                  <p class="train_list_from">杭州东</p>
+                  <i class="fa  fa-arrow-circle-down"></i>
+                  <p class="train_list_to">郑州</p>
+                </dt>
+                <dd>
+                                    <dfn>¥</dfn>
+                                    <span class="base_price">233.5</span>
+                </dd>
+              </a>
+            </dl>
+                        <dl>
+              <a href="http://www.tieyou.com/daigou/hangzhoudong-beijingnan.html" target="_blank">
+                <dt>
+                  <p class="train_list_from">杭州东</p>
+                  <i class="fa  fa-arrow-circle-down"></i>
+                  <p class="train_list_to">北京南</p>
+                </dt>
+                <dd>
+                                    <dfn>¥</dfn>
+                                    <span class="base_price">538.5</span>
+                </dd>
+              </a>
+            </dl>
+                        <dl>
+              <a href="http://www.tieyou.com/daigou/hangzhou-shanghaihongqiao.html" target="_blank">
+                <dt>
+                  <p class="train_list_from">杭州</p>
+                  <i class="fa  fa-arrow-circle-down"></i>
+                  <p class="train_list_to">上海虹桥</p>
+                </dt>
+                <dd>
+                                    <dfn>¥</dfn>
+                                    <span class="base_price">48.5</span>
+                </dd>
+              </a>
+            </dl>
+                        <dl>
+              <a href="http://www.tieyou.com/daigou/hangzhoudong-changsha.html" target="_blank">
+                <dt>
+                  <p class="train_list_from">杭州东</p>
+                  <i class="fa  fa-arrow-circle-down"></i>
+                  <p class="train_list_to">长沙</p>
+                </dt>
+                <dd>
+                                    <dfn>¥</dfn>
+                                    <span class="base_price">242.5</span>
+                </dd>
+              </a>
+            </dl>
+                        <dl>
+              <a href="http://www.tieyou.com/daigou/hangzhoudong-hefei.html" target="_blank">
+                <dt>
+                  <p class="train_list_from">杭州东</p>
+                  <i class="fa  fa-arrow-circle-down"></i>
+                  <p class="train_list_to">合肥</p>
+                </dt>
+                <dd>
+                                    <dfn>¥</dfn>
+                                    <span class="base_price">178.5</span>
+                </dd>
+              </a>
+            </dl>
+                        <dl>
+              <a href="http://www.tieyou.com/daigou/hangzhoudong-wuhan.html" target="_blank">
+                <dt>
+                  <p class="train_list_from">杭州东</p>
+                  <i class="fa  fa-arrow-circle-down"></i>
+                  <p class="train_list_to">武汉</p>
+                </dt>
+                <dd>
+                                    <dfn>¥</dfn>
+                                    <span class="base_price">284.5</span>
+                </dd>
+              </a>
+            </dl>
+                        <dl>
+              <a href="http://www.tieyou.com/daigou/hangzhoudong-nanjingnan.html" target="_blank">
+                <dt>
+                  <p class="train_list_from">杭州东</p>
+                  <i class="fa  fa-arrow-circle-down"></i>
+                  <p class="train_list_to">南京南</p>
+                </dt>
+                <dd>
+                                    <dfn>¥</dfn>
+                                    <span class="base_price">117.5</span>
+                </dd>
+              </a>
+            </dl>
+                        <dl>
+              <a href="http://www.tieyou.com/daigou/hangzhoudong-shangqiu.html" target="_blank">
+                <dt>
+                  <p class="train_list_from">杭州东</p>
+                  <i class="fa  fa-arrow-circle-down"></i>
+                  <p class="train_list_to">商丘</p>
+                </dt>
+                <dd>
+                                    <dfn>¥</dfn>
+                                    <span class="base_price">214.5</span>
+                </dd>
+              </a>
+            </dl>
+                        <dl>
+              <a href="http://www.tieyou.com/daigou/hangzhoudong-wenzhounan.html" target="_blank">
+                <dt>
+                  <p class="train_list_from">杭州东</p>
+                  <i class="fa  fa-arrow-circle-down"></i>
+                  <p class="train_list_to">温州南</p>
+                </dt>
+                <dd>
+                                    <dfn>¥</dfn>
+                                    <span class="base_price">153.0</span>
+                </dd>
+              </a>
+            </dl>
+                        <dl>
+              <a href="http://www.tieyou.com/daigou/hangzhoudong-nanchang.html" target="_blank">
+                <dt>
+                  <p class="train_list_from">杭州东</p>
+                  <i class="fa  fa-arrow-circle-down"></i>
+                  <p class="train_list_to">南昌</p>
+                </dt>
+                <dd>
+                                    <dfn>¥</dfn>
+                                    <span class="base_price">190.5</span>
+                </dd>
+              </a>
+            </dl>
+                        <dl>
+              <a href="http://www.tieyou.com/daigou/hangzhoudong-yuyaobei.html" target="_blank">
+                <dt>
+                  <p class="train_list_from">杭州东</p>
+                  <i class="fa  fa-arrow-circle-down"></i>
+                  <p class="train_list_to">余姚北</p>
+                </dt>
+                <dd>
+                                    <dfn>¥</dfn>
+                                    <span class="base_price">48.5</span>
+                </dd>
+              </a>
+            </dl>
+                        <dl>
+              <a href="http://www.tieyou.com/daigou/hangzhou-jinhuaxi.html" target="_blank">
+                <dt>
+                  <p class="train_list_from">杭州</p>
+                  <i class="fa  fa-arrow-circle-down"></i>
+                  <p class="train_list_to">金华西</p>
+                </dt>
+                <dd>
+                                    <dfn>¥</dfn>
+                                    <span class="base_price">54.5</span>
+                </dd>
+              </a>
+            </dl>
+                      </div>
+
+<div class="train_list " cid="6" style="display: none;">
+                        <dl>
+              <a href="http://www.tieyou.com/daigou/wuhan-shenzhenbei.html" target="_blank">
+                <dt>
+                  <p class="train_list_from">武汉</p>
+                  <i class="fa  fa-arrow-circle-down"></i>
+                  <p class="train_list_to">深圳北</p>
+                </dt>
+                <dd>
+                                    <dfn>¥</dfn>
+                                    <span class="base_price">538.0</span>
+                </dd>
+              </a>
+            </dl>
+                        <dl>
+              <a href="http://www.tieyou.com/daigou/wuhan-shanghaihongqiao.html" target="_blank">
+                <dt>
+                  <p class="train_list_from">武汉</p>
+                  <i class="fa  fa-arrow-circle-down"></i>
+                  <p class="train_list_to">上海虹桥</p>
+                </dt>
+                <dd>
+                                    <dfn>¥</dfn>
+                                    <span class="base_price">302.5</span>
+                </dd>
+              </a>
+            </dl>
+                        <dl>
+              <a href="http://www.tieyou.com/daigou/wuhan-beijingxi.html" target="_blank">
+                <dt>
+                  <p class="train_list_from">武汉</p>
+                  <i class="fa  fa-arrow-circle-down"></i>
+                  <p class="train_list_to">北京西</p>
+                </dt>
+                <dd>
+                                    <dfn>¥</dfn>
+                                    <span class="base_price">520.5</span>
+                </dd>
+              </a>
+            </dl>
+                        <dl>
+              <a href="http://www.tieyou.com/daigou/wuhan-guangzhounan.html" target="_blank">
+                <dt>
+                  <p class="train_list_from">武汉</p>
+                  <i class="fa  fa-arrow-circle-down"></i>
+                  <p class="train_list_to">广州南</p>
+                </dt>
+                <dd>
+                                    <dfn>¥</dfn>
+                                    <span class="base_price">463.5</span>
+                </dd>
+              </a>
+            </dl>
+                        <dl>
+              <a href="http://www.tieyou.com/daigou/wuhan-fuzhou.html" target="_blank">
+                <dt>
+                  <p class="train_list_from">武汉</p>
+                  <i class="fa  fa-arrow-circle-down"></i>
+                  <p class="train_list_to">福州</p>
+                </dt>
+                <dd>
+                                    <dfn>¥</dfn>
+                                    <span class="base_price">261.5</span>
+                </dd>
+              </a>
+            </dl>
+                        <dl>
+              <a href="http://www.tieyou.com/daigou/wuhan-jinan.html" target="_blank">
+                <dt>
+                  <p class="train_list_from">武汉</p>
+                  <i class="fa  fa-arrow-circle-down"></i>
+                  <p class="train_list_to">济南</p>
+                </dt>
+                <dd>
+                                    <dfn>¥</dfn>
+                                    <span class="base_price">367.5</span>
+                </dd>
+              </a>
+            </dl>
+                        <dl>
+              <a href="http://www.tieyou.com/daigou/wuhan-xianbei.html" target="_blank">
+                <dt>
+                  <p class="train_list_from">武汉</p>
+                  <i class="fa  fa-arrow-circle-down"></i>
+                  <p class="train_list_to">西安北</p>
+                </dt>
+                <dd>
+                                    <dfn>¥</dfn>
+                                    <span class="base_price">454.5</span>
+                </dd>
+              </a>
+            </dl>
+                        <dl>
+              <a href="http://www.tieyou.com/daigou/wuhan-hangzhoudong.html" target="_blank">
+                <dt>
+                  <p class="train_list_from">武汉</p>
+                  <i class="fa  fa-arrow-circle-down"></i>
+                  <p class="train_list_to">杭州东</p>
+                </dt>
+                <dd>
+                                    <dfn>¥</dfn>
+                                    <span class="base_price">284.5</span>
+                </dd>
+              </a>
+            </dl>
+                        <dl>
+              <a href="http://www.tieyou.com/daigou/wuhan-shiyan.html" target="_blank">
+                <dt>
+                  <p class="train_list_from">武汉</p>
+                  <i class="fa  fa-arrow-circle-down"></i>
+                  <p class="train_list_to">十堰</p>
+                </dt>
+                <dd>
+                                    <dfn>¥</dfn>
+                                    <span class="base_price">149.0</span>
+                </dd>
+              </a>
+            </dl>
+                        <dl>
+              <a href="http://www.tieyou.com/daigou/wuhan-xuzhoudong.html" target="_blank">
+                <dt>
+                  <p class="train_list_from">武汉</p>
+                  <i class="fa  fa-arrow-circle-down"></i>
+                  <p class="train_list_to">徐州东</p>
+                </dt>
+                <dd>
+                                    <dfn>¥</dfn>
+                                    <span class="base_price">238.0</span>
+                </dd>
+              </a>
+            </dl>
+                        <dl>
+              <a href="http://www.tieyou.com/daigou/wuhan-taiyuan.html" target="_blank">
+                <dt>
+                  <p class="train_list_from">武汉</p>
+                  <i class="fa  fa-arrow-circle-down"></i>
+                  <p class="train_list_to">太原</p>
+                </dt>
+                <dd>
+                                    <dfn>¥</dfn>
+                                    <span class="base_price">480.5</span>
+                </dd>
+              </a>
+            </dl>
+                        <dl>
+              <a href="http://www.tieyou.com/daigou/wuhan-changshanan.html" target="_blank">
+                <dt>
+                  <p class="train_list_from">武汉</p>
+                  <i class="fa  fa-arrow-circle-down"></i>
+                  <p class="train_list_to">长沙南</p>
+                </dt>
+                <dd>
+                                    <dfn>¥</dfn>
+                                    <span class="base_price">164.5</span>
+                </dd>
+              </a>
+            </dl>
+                      </div>
+
+<div class="train_list " cid="5" style="display: none;">
+                        <dl>
+              <a href="http://www.tieyou.com/daigou/xiamenbei-shenzhenbei.html" target="_blank">
+                <dt>
+                  <p class="train_list_from">厦门北</p>
+                  <i class="fa  fa-arrow-circle-down"></i>
+                  <p class="train_list_to">深圳北</p>
+                </dt>
+                <dd>
+                                    <dfn>¥</dfn>
+                                    <span class="base_price">150.5</span>
+                </dd>
+              </a>
+            </dl>
+                        <dl>
+              <a href="http://www.tieyou.com/daigou/xiamenbei-fuzhou.html" target="_blank">
+                <dt>
+                  <p class="train_list_from">厦门北</p>
+                  <i class="fa  fa-arrow-circle-down"></i>
+                  <p class="train_list_to">福州</p>
+                </dt>
+                <dd>
+                                    <dfn>¥</dfn>
+                                    <span class="base_price">71.5</span>
+                </dd>
+              </a>
+            </dl>
+                        <dl>
+              <a href="http://www.tieyou.com/daigou/xiamenbei-hankou.html" target="_blank">
+                <dt>
+                  <p class="train_list_from">厦门北</p>
+                  <i class="fa  fa-arrow-circle-down"></i>
+                  <p class="train_list_to">汉口</p>
+                </dt>
+                <dd>
+                                    <dfn>¥</dfn>
+                                    <span class="base_price">313.0</span>
+                </dd>
+              </a>
+            </dl>
+                        <dl>
+              <a href="http://www.tieyou.com/daigou/xiamenbei-longyan.html" target="_blank">
+                <dt>
+                  <p class="train_list_from">厦门北</p>
+                  <i class="fa  fa-arrow-circle-down"></i>
+                  <p class="train_list_to">龙岩</p>
+                </dt>
+                <dd>
+                                    <dfn>¥</dfn>
+                                    <span class="base_price">45.5</span>
+                </dd>
+              </a>
+            </dl>
+                        <dl>
+              <a href="http://www.tieyou.com/daigou/xiamenbei-shanghaihongqiao.html" target="_blank">
+                <dt>
+                  <p class="train_list_from">厦门北</p>
+                  <i class="fa  fa-arrow-circle-down"></i>
+                  <p class="train_list_to">上海虹桥</p>
+                </dt>
+                <dd>
+                                    <dfn>¥</dfn>
+                                    <span class="base_price">328.0</span>
+                </dd>
+              </a>
+            </dl>
+                        <dl>
+              <a href="http://www.tieyou.com/daigou/xiamenbei-wuhan.html" target="_blank">
+                <dt>
+                  <p class="train_list_from">厦门北</p>
+                  <i class="fa  fa-arrow-circle-down"></i>
+                  <p class="train_list_to">武汉</p>
+                </dt>
+                <dd>
+                                    <dfn>¥</dfn>
+                                    <span class="base_price">302.5</span>
+                </dd>
+              </a>
+            </dl>
+                        <dl>
+              <a href="http://www.tieyou.com/daigou/xiamenbei-nanchang.html" target="_blank">
+                <dt>
+                  <p class="train_list_from">厦门北</p>
+                  <i class="fa  fa-arrow-circle-down"></i>
+                  <p class="train_list_to">南昌</p>
+                </dt>
+                <dd>
+                                    <dfn>¥</dfn>
+                                    <span class="base_price">202.0</span>
+                </dd>
+              </a>
+            </dl>
+                        <dl>
+              <a href="http://www.tieyou.com/daigou/xiamenbei-hangzhoudong.html" target="_blank">
+                <dt>
+                  <p class="train_list_from">厦门北</p>
+                  <i class="fa  fa-arrow-circle-down"></i>
+                  <p class="train_list_to">杭州东</p>
+                </dt>
+                <dd>
+                                    <dfn>¥</dfn>
+                                    <span class="base_price">281.5</span>
+                </dd>
+              </a>
+            </dl>
+                        <dl>
+              <a href="http://www.tieyou.com/daigou/xiamenbei-sanmingbei.html" target="_blank">
+                <dt>
+                  <p class="train_list_from">厦门北</p>
+                  <i class="fa  fa-arrow-circle-down"></i>
+                  <p class="train_list_to">三明北</p>
+                </dt>
+                <dd>
+                                    <dfn>¥</dfn>
+                                    <span class="base_price">98.5</span>
+                </dd>
+              </a>
+            </dl>
+                        <dl>
+              <a href="http://www.tieyou.com/daigou/xiamenbei-wenzhounan.html" target="_blank">
+                <dt>
+                  <p class="train_list_from">厦门北</p>
+                  <i class="fa  fa-arrow-circle-down"></i>
+                  <p class="train_list_to">温州南</p>
+                </dt>
+                <dd>
+                                    <dfn>¥</dfn>
+                                    <span class="base_price">152.0</span>
+                </dd>
+              </a>
+            </dl>
+                        <dl>
+              <a href="http://www.tieyou.com/daigou/xiamenbei-nanjingnan.html" target="_blank">
+                <dt>
+                  <p class="train_list_from">厦门北</p>
+                  <i class="fa  fa-arrow-circle-down"></i>
+                  <p class="train_list_to">南京南</p>
+                </dt>
+                <dd>
+                                    <dfn>¥</dfn>
+                                    <span class="base_price">360.5</span>
+                </dd>
+              </a>
+            </dl>
+                        <dl>
+              <a href="http://www.tieyou.com/daigou/xiamenbei-ningbo.html" target="_blank">
+                <dt>
+                  <p class="train_list_from">厦门北</p>
+                  <i class="fa  fa-arrow-circle-down"></i>
+                  <p class="train_list_to">宁波</p>
+                </dt>
+                <dd>
+                                    <dfn>¥</dfn>
+                                    <span class="base_price">238.0</span>
+                </dd>
+              </a>
+            </dl>
+                      </div>
+
+                    <div class="train_list block" cid="1" style="display: show;">
+                        <dl>
+              <a href="http://www.tieyou.com/daigou/beijingnan-shanghaihongqiao.html" target="_blank">
+                <dt>
+                  <p class="train_list_from">北京南</p>
+                  <i class="fa  fa-arrow-circle-down"></i>
+                  <p class="train_list_to">上海虹桥</p>
+                </dt>
+                <dd>
+                                    <dfn>¥</dfn>
+                                    <span class="base_price">553.0</span>
+                </dd>
+              </a>
+            </dl>
+                        <dl>
+              <a href="http://www.tieyou.com/daigou/beijingxi-taiyuan.html" target="_blank">
+                <dt>
+                  <p class="train_list_from">北京西</p>
+                  <i class="fa  fa-arrow-circle-down"></i>
+                  <p class="train_list_to">太原</p>
+                </dt>
+                <dd>
+                                    <dfn>¥</dfn>
+                                    <span class="base_price">194.0</span>
+                </dd>
+              </a>
+            </dl>
+                        <dl>
+              <a href="http://www.tieyou.com/daigou/beijingxi-xianbei.html" target="_blank">
+                <dt>
+                  <p class="train_list_from">北京西</p>
+                  <i class="fa  fa-arrow-circle-down"></i>
+                  <p class="train_list_to">西安北</p>
+                </dt>
+                <dd>
+                                    <dfn>¥</dfn>
+                                    <span class="base_price">515.5</span>
+                </dd>
+              </a>
+            </dl>
+                        <dl>
+              <a href="http://www.tieyou.com/daigou/beijingnan-hefei.html" target="_blank">
+                <dt>
+                  <p class="train_list_from">北京南</p>
+                  <i class="fa  fa-arrow-circle-down"></i>
+                  <p class="train_list_to">合肥</p>
+                </dt>
+                <dd>
+                                    <dfn>¥</dfn>
+                                    <span class="base_price">427.5</span>
+                </dd>
+              </a>
+            </dl>
+                        <dl>
+              <a href="http://www.tieyou.com/daigou/beijingnan-hangzhou.html" target="_blank">
+                <dt>
+                  <p class="train_list_from">北京南</p>
+                  <i class="fa  fa-arrow-circle-down"></i>
+                  <p class="train_list_to">杭州</p>
+                </dt>
+                <dd>
+                                    <dfn>¥</dfn>
+                                    <span class="base_price">540.0</span>
+                </dd>
+              </a>
+            </dl>
+                        <dl>
+              <a href="http://www.tieyou.com/daigou/beijingxi-zhengzhoudong.html" target="_blank">
+                <dt>
+                  <p class="train_list_from">北京西</p>
+                  <i class="fa  fa-arrow-circle-down"></i>
+                  <p class="train_list_to">郑州东</p>
+                </dt>
+                <dd>
+                                    <dfn>¥</dfn>
+                                    <span class="base_price">309.0</span>
+                </dd>
+              </a>
+            </dl>
+                        <dl>
+              <a href="http://www.tieyou.com/daigou/beijing-shenyangbei.html" target="_blank">
+                <dt>
+                  <p class="train_list_from">北京</p>
+                  <i class="fa  fa-arrow-circle-down"></i>
+                  <p class="train_list_to">沈阳北</p>
+                </dt>
+                <dd>
+                                    <dfn>¥</dfn>
+                                    <span class="base_price">206.0</span>
+                </dd>
+              </a>
+            </dl>
+                        <dl>
+              <a href="http://www.tieyou.com/daigou/beijingnan-jinan.html" target="_blank">
+                <dt>
+                  <p class="train_list_from">北京南</p>
+                  <i class="fa  fa-arrow-circle-down"></i>
+                  <p class="train_list_to">济南</p>
+                </dt>
+                <dd>
+                                    <dfn>¥</dfn>
+                                    <span class="base_price">194.5</span>
+                </dd>
+              </a>
+            </dl>
+                        <dl>
+              <a href="http://www.tieyou.com/daigou/beijing-haerbinxi.html" target="_blank">
+                <dt>
+                  <p class="train_list_from">北京</p>
+                  <i class="fa  fa-arrow-circle-down"></i>
+                  <p class="train_list_to">哈尔滨西</p>
+                </dt>
+                <dd>
+                                    <dfn>¥</dfn>
+                                    <span class="base_price">306.5</span>
+                </dd>
+              </a>
+            </dl>
+                        <dl>
+              <a href="http://www.tieyou.com/daigou/beijingnan-weifang.html" target="_blank">
+                <dt>
+                  <p class="train_list_from">北京南</p>
+                  <i class="fa  fa-arrow-circle-down"></i>
+                  <p class="train_list_to">潍坊</p>
+                </dt>
+                <dd>
+                                    <dfn>¥</dfn>
+                                    <span class="base_price">259.0</span>
+                </dd>
+              </a>
+            </dl>
+                        <dl>
+              <a href="http://www.tieyou.com/daigou/beijingnan-qingdao.html" target="_blank">
+                <dt>
+                  <p class="train_list_from">北京南</p>
+                  <i class="fa  fa-arrow-circle-down"></i>
+                  <p class="train_list_to">青岛</p>
+                </dt>
+                <dd>
+                                    <dfn>¥</dfn>
+                                    <span class="base_price">249.0</span>
+                </dd>
+              </a>
+            </dl>
+                        <dl>
+              <a href="http://www.tieyou.com/daigou/beijing-changchun.html" target="_blank">
+                <dt>
+                  <p class="train_list_from">北京</p>
+                  <i class="fa  fa-arrow-circle-down"></i>
+                  <p class="train_list_to">长春</p>
+                </dt>
+                <dd>
+                                    <dfn>¥</dfn>
+                                    <span class="base_price">267.5</span>
+                </dd>
+              </a>
+            </dl>
+                      </div>
+                    <div class="train_list " style="display: none;">
+                        <dl>
+              <a href="http://www.tieyou.com/daigou/shanghaihongqiao-beijingnan.html" target="_blank">
+                <dt>
+                  <p class="train_list_from">上海虹桥</p>
+                  <i class="fa  fa-arrow-circle-down"></i>
+                  <p class="train_list_to">北京南</p>
+                </dt>
+                <dd>
+                                    <dfn>¥</dfn>
+                                    <span class="base_price">553.0</span>
+                </dd>
+              </a>
+            </dl>
+                        <dl>
+              <a href="http://www.tieyou.com/daigou/shanghaihongqiao-xianbei.html" target="_blank">
+                <dt>
+                  <p class="train_list_from">上海虹桥</p>
+                  <i class="fa  fa-arrow-circle-down"></i>
+                  <p class="train_list_to">西安北</p>
+                </dt>
+                <dd>
+                                    <dfn>¥</dfn>
+                                    <span class="base_price">338.0</span>
+                </dd>
+              </a>
+            </dl>
+                        <dl>
+              <a href="http://www.tieyou.com/daigou/shanghaihongqiao-zhengzhou.html" target="_blank">
+                <dt>
+                  <p class="train_list_from">上海虹桥</p>
+                  <i class="fa  fa-arrow-circle-down"></i>
+                  <p class="train_list_to">郑州</p>
+                </dt>
+                <dd>
+                                    <dfn>¥</dfn>
+                                    <span class="base_price">236.5</span>
+                </dd>
+              </a>
+            </dl>
+                        <dl>
+              <a href="http://www.tieyou.com/daigou/shanghaihongqiao-hangzhou.html" target="_blank">
+                <dt>
+                  <p class="train_list_from">上海虹桥</p>
+                  <i class="fa  fa-arrow-circle-down"></i>
+                  <p class="train_list_to">杭州</p>
+                </dt>
+                <dd>
+                                    <dfn>¥</dfn>
+                                    <span class="base_price">77.5</span>
+                </dd>
+              </a>
+            </dl>
+                        <dl>
+              <a href="http://www.tieyou.com/daigou/shanghaihongqiao-hankou.html" target="_blank">
+                <dt>
+                  <p class="train_list_from">上海虹桥</p>
+                  <i class="fa  fa-arrow-circle-down"></i>
+                  <p class="train_list_to">汉口</p>
+                </dt>
+                <dd>
+                                    <dfn>¥</dfn>
+                                    <span class="base_price">258.0</span>
+                </dd>
+              </a>
+            </dl>
+                        <dl>
+              <a href="http://www.tieyou.com/daigou/shanghaihongqiao-nanchang.html" target="_blank">
+                <dt>
+                  <p class="train_list_from">上海虹桥</p>
+                  <i class="fa  fa-arrow-circle-down"></i>
+                  <p class="train_list_to">南昌</p>
+                </dt>
+                <dd>
+                                    <dfn>¥</dfn>
+                                    <span class="base_price">237.0</span>
+                </dd>
+              </a>
+            </dl>
+                        <dl>
+              <a href="http://www.tieyou.com/daigou/shanghaihongqiao-nanjingnan.html" target="_blank">
+                <dt>
+                  <p class="train_list_from">上海虹桥</p>
+                  <i class="fa  fa-arrow-circle-down"></i>
+                  <p class="train_list_to">南京南</p>
+                </dt>
+                <dd>
+                                    <dfn>¥</dfn>
+                                    <span class="base_price">134.5</span>
+                </dd>
+              </a>
+            </dl>
+                        <dl>
+              <a href="http://www.tieyou.com/daigou/shanghaihongqiao-ningbo.html" target="_blank">
+                <dt>
+                  <p class="train_list_from">上海虹桥</p>
+                  <i class="fa  fa-arrow-circle-down"></i>
+                  <p class="train_list_to">宁波</p>
+                </dt>
+                <dd>
+                                    <dfn>¥</dfn>
+                                    <span class="base_price">144.0</span>
+                </dd>
+              </a>
+            </dl>
+                        <dl>
+              <a href="http://www.tieyou.com/daigou/shanghaihongqiao-wenzhounan.html" target="_blank">
+                <dt>
+                  <p class="train_list_from">上海虹桥</p>
+                  <i class="fa  fa-arrow-circle-down"></i>
+                  <p class="train_list_to">温州南</p>
+                </dt>
+                <dd>
+                                    <dfn>¥</dfn>
+                                    <span class="base_price">226.0</span>
+                </dd>
+              </a>
+            </dl>
+                        <dl>
+              <a href="http://www.tieyou.com/daigou/shanghaihongqiao-hefei.html" target="_blank">
+                <dt>
+                  <p class="train_list_from">上海虹桥</p>
+                  <i class="fa  fa-arrow-circle-down"></i>
+                  <p class="train_list_to">合肥</p>
+                </dt>
+                <dd>
+                                    <dfn>¥</dfn>
+                                    <span class="base_price">156.0</span>
+                </dd>
+              </a>
+            </dl>
+                        <dl>
+              <a href="http://www.tieyou.com/daigou/shanghaihongqiao-changsha.html" target="_blank">
+                <dt>
+                  <p class="train_list_from">上海虹桥</p>
+                  <i class="fa  fa-arrow-circle-down"></i>
+                  <p class="train_list_to">长沙</p>
+                </dt>
+                <dd>
+                                    <dfn>¥</dfn>
+                                    <span class="base_price">257.5</span>
+                </dd>
+              </a>
+            </dl>
+                        <dl>
+              <a href="http://www.tieyou.com/daigou/shanghaihongqiao-wuchang.html" target="_blank">
+                <dt>
+                  <p class="train_list_from">上海虹桥</p>
+                  <i class="fa  fa-arrow-circle-down"></i>
+                  <p class="train_list_to">武昌</p>
+                </dt>
+                <dd>
+                                    <dfn>¥</dfn>
+                                    <span class="base_price">269.0</span>
+                </dd>
+              </a>
+            </dl>
+                      </div>
+                    <div class="train_list " style="display: none;">
+                        <dl>
+              <a href="http://www.tieyou.com/daigou/guangzhounan-wuhan.html" target="_blank">
+                <dt>
+                  <p class="train_list_from">广州南</p>
+                  <i class="fa  fa-arrow-circle-down"></i>
+                  <p class="train_list_to">武汉</p>
+                </dt>
+                <dd>
+                                    <dfn>¥</dfn>
+                                    <span class="base_price">463.5</span>
+                </dd>
+              </a>
+            </dl>
+                        <dl>
+              <a href="http://www.tieyou.com/daigou/guangzhounan-chaoshan.html" target="_blank">
+                <dt>
+                  <p class="train_list_from">广州南</p>
+                  <i class="fa  fa-arrow-circle-down"></i>
+                  <p class="train_list_to">潮汕</p>
+                </dt>
+                <dd>
+                                    <dfn>¥</dfn>
+                                    <span class="base_price">164.0</span>
+                </dd>
+              </a>
+            </dl>
+                        <dl>
+              <a href="http://www.tieyou.com/daigou/guangzhounan-yueyangdong.html" target="_blank">
+                <dt>
+                  <p class="train_list_from">广州南</p>
+                  <i class="fa  fa-arrow-circle-down"></i>
+                  <p class="train_list_to">岳阳东</p>
+                </dt>
+                <dd>
+                                    <dfn>¥</dfn>
+                                    <span class="base_price">373.5</span>
+                </dd>
+              </a>
+            </dl>
+                        <dl>
+              <a href="http://www.tieyou.com/daigou/guangzhounan-hengyangdong.html" target="_blank">
+                <dt>
+                  <p class="train_list_from">广州南</p>
+                  <i class="fa  fa-arrow-circle-down"></i>
+                  <p class="train_list_to">衡阳东</p>
+                </dt>
+                <dd>
+                                    <dfn>¥</dfn>
+                                    <span class="base_price">244.0</span>
+                </dd>
+              </a>
+            </dl>
+                        <dl>
+              <a href="http://www.tieyou.com/daigou/guangzhounan-beijingxi.html" target="_blank">
+                <dt>
+                  <p class="train_list_from">广州南</p>
+                  <i class="fa  fa-arrow-circle-down"></i>
+                  <p class="train_list_to">北京西</p>
+                </dt>
+                <dd>
+                                    <dfn>¥</dfn>
+                                    <span class="base_price">862.0</span>
+                </dd>
+              </a>
+            </dl>
+                        <dl>
+              <a href="http://www.tieyou.com/daigou/guangzhounan-shenzhenbei.html" target="_blank">
+                <dt>
+                  <p class="train_list_from">广州南</p>
+                  <i class="fa  fa-arrow-circle-down"></i>
+                  <p class="train_list_to">深圳北</p>
+                </dt>
+                <dd>
+                                    <dfn>¥</dfn>
+                                    <span class="base_price">74.5</span>
+                </dd>
+              </a>
+            </dl>
+                        <dl>
+              <a href="http://www.tieyou.com/daigou/guangzhounan-changshanan.html" target="_blank">
+                <dt>
+                  <p class="train_list_from">广州南</p>
+                  <i class="fa  fa-arrow-circle-down"></i>
+                  <p class="train_list_to">长沙南</p>
+                </dt>
+                <dd>
+                                    <dfn>¥</dfn>
+                                    <span class="base_price">314.0</span>
+                </dd>
+              </a>
+            </dl>
+                        <dl>
+              <a href="http://www.tieyou.com/daigou/guangzhounan-puning.html" target="_blank">
+                <dt>
+                  <p class="train_list_from">广州南</p>
+                  <i class="fa  fa-arrow-circle-down"></i>
+                  <p class="train_list_to">普宁</p>
+                </dt>
+                <dd>
+                                    <dfn>¥</dfn>
+                                    <span class="base_price">148.5</span>
+                </dd>
+              </a>
+            </dl>
+                        <dl>
+              <a href="http://www.tieyou.com/daigou/guangzhounan-zhengzhoudong.html" target="_blank">
+                <dt>
+                  <p class="train_list_from">广州南</p>
+                  <i class="fa  fa-arrow-circle-down"></i>
+                  <p class="train_list_to">郑州东</p>
+                </dt>
+                <dd>
+                                    <dfn>¥</dfn>
+                                    <span class="base_price">653.0</span>
+                </dd>
+              </a>
+            </dl>
+                        <dl>
+              <a href="http://www.tieyou.com/daigou/guangzhounan-zhuhai.html" target="_blank">
+                <dt>
+                  <p class="train_list_from">广州南</p>
+                  <i class="fa  fa-arrow-circle-down"></i>
+                  <p class="train_list_to">珠海</p>
+                </dt>
+                <dd>
+                                    <dfn>¥</dfn>
+                                    <span class="base_price">70.0</span>
+                </dd>
+              </a>
+            </dl>
+                        <dl>
+              <a href="http://www.tieyou.com/daigou/guangzhounan-xianbei.html" target="_blank">
+                <dt>
+                  <p class="train_list_from">广州南</p>
+                  <i class="fa  fa-arrow-circle-down"></i>
+                  <p class="train_list_to">西安北</p>
+                </dt>
+                <dd>
+                                    <dfn>¥</dfn>
+                                    <span class="base_price">813.5</span>
+                </dd>
+              </a>
+            </dl>
+                        <dl>
+              <a href="http://www.tieyou.com/daigou/guangzhounan-zhuzhouxi.html" target="_blank">
+                <dt>
+                  <p class="train_list_from">广州南</p>
+                  <i class="fa  fa-arrow-circle-down"></i>
+                  <p class="train_list_to">株洲西</p>
+                </dt>
+                <dd>
+                                    <dfn>¥</dfn>
+                                    <span class="base_price">294.0</span>
+                </dd>
+              </a>
+            </dl>
+                      </div>
+                    <div class="train_list " style="display: none;">
+                        <dl>
+              <a href="http://www.tieyou.com/daigou/tianjin-beijingnan.html" target="_blank">
+                <dt>
+                  <p class="train_list_from">天津</p>
+                  <i class="fa  fa-arrow-circle-down"></i>
+                  <p class="train_list_to">北京南</p>
+                </dt>
+                <dd>
+                                    <dfn>¥</dfn>
+                                    <span class="base_price">54.5</span>
+                </dd>
+              </a>
+            </dl>
+                        <dl>
+              <a href="http://www.tieyou.com/daigou/tianjinxi-qingdao.html" target="_blank">
+                <dt>
+                  <p class="train_list_from">天津西</p>
+                  <i class="fa  fa-arrow-circle-down"></i>
+                  <p class="train_list_to">青岛</p>
+                </dt>
+                <dd>
+                                    <dfn>¥</dfn>
+                                    <span class="base_price">219.0</span>
+                </dd>
+              </a>
+            </dl>
+                        <dl>
+              <a href="http://www.tieyou.com/daigou/tianjinxi-shanghaihongqiao.html" target="_blank">
+                <dt>
+                  <p class="train_list_from">天津西</p>
+                  <i class="fa  fa-arrow-circle-down"></i>
+                  <p class="train_list_to">上海虹桥</p>
+                </dt>
+                <dd>
+                                    <dfn>¥</dfn>
+                                    <span class="base_price">513.5</span>
+                </dd>
+              </a>
+            </dl>
+                        <dl>
+              <a href="http://www.tieyou.com/daigou/tianjinnan-hefei.html" target="_blank">
+                <dt>
+                  <p class="train_list_from">天津南</p>
+                  <i class="fa  fa-arrow-circle-down"></i>
+                  <p class="train_list_to">合肥</p>
+                </dt>
+                <dd>
+                                    <dfn>¥</dfn>
+                                    <span class="base_price">G29</span>
+                </dd>
+              </a>
+            </dl>
+                        <dl>
+              <a href="http://www.tieyou.com/daigou/tianjin-shenyangbei.html" target="_blank">
+                <dt>
+                  <p class="train_list_from">天津</p>
+                  <i class="fa  fa-arrow-circle-down"></i>
+                  <p class="train_list_to">沈阳北</p>
+                </dt>
+                <dd>
+                                    <dfn>¥</dfn>
+                                    <span class="base_price">240.5</span>
+                </dd>
+              </a>
+            </dl>
+                        <dl>
+              <a href="http://www.tieyou.com/daigou/tianjinxi-ningbo.html" target="_blank">
+                <dt>
+                  <p class="train_list_from">天津西</p>
+                  <i class="fa  fa-arrow-circle-down"></i>
+                  <p class="train_list_to">宁波</p>
+                </dt>
+                <dd>
+                                    <dfn>¥</dfn>
+                                    <span class="base_price">557.0</span>
+                </dd>
+              </a>
+            </dl>
+                        <dl>
+              <a href="http://www.tieyou.com/daigou/tianjinxi-xuzhoudong.html" target="_blank">
+                <dt>
+                  <p class="train_list_from">天津西</p>
+                  <i class="fa  fa-arrow-circle-down"></i>
+                  <p class="train_list_to">徐州东</p>
+                </dt>
+                <dd>
+                                    <dfn>¥</dfn>
+                                    <span class="base_price">264.0</span>
+                </dd>
+              </a>
+            </dl>
+                        <dl>
+              <a href="http://www.tieyou.com/daigou/tianjinxi-nanjingnan.html" target="_blank">
+                <dt>
+                  <p class="train_list_from">天津西</p>
+                  <i class="fa  fa-arrow-circle-down"></i>
+                  <p class="train_list_to">南京南</p>
+                </dt>
+                <dd>
+                                    <dfn>¥</dfn>
+                                    <span class="base_price">403.5</span>
+                </dd>
+              </a>
+            </dl>
+                        <dl>
+              <a href="http://www.tieyou.com/daigou/tianjinxi-hangzhoudong.html" target="_blank">
+                <dt>
+                  <p class="train_list_from">天津西</p>
+                  <i class="fa  fa-arrow-circle-down"></i>
+                  <p class="train_list_to">杭州东</p>
+                </dt>
+                <dd>
+                                    <dfn>¥</dfn>
+                                    <span class="base_price">500.0</span>
+                </dd>
+              </a>
+            </dl>
+                        <dl>
+              <a href="http://www.tieyou.com/daigou/tianjinxi-weifang.html" target="_blank">
+                <dt>
+                  <p class="train_list_from">天津西</p>
+                  <i class="fa  fa-arrow-circle-down"></i>
+                  <p class="train_list_to">潍坊</p>
+                </dt>
+                <dd>
+                                    <dfn>¥</dfn>
+                                    <span class="base_price">164.0</span>
+                </dd>
+              </a>
+            </dl>
+                        <dl>
+              <a href="http://www.tieyou.com/daigou/tianjinxi-haerbinxi.html" target="_blank">
+                <dt>
+                  <p class="train_list_from">天津西</p>
+                  <i class="fa  fa-arrow-circle-down"></i>
+                  <p class="train_list_to">哈尔滨西</p>
+                </dt>
+                <dd>
+                                    <dfn>¥</dfn>
+                                    <span class="base_price">433.5</span>
+                </dd>
+              </a>
+            </dl>
+                        <dl>
+              <a href="http://www.tieyou.com/daigou/tianjinxi-suzhoubei.html" target="_blank">
+                <dt>
+                  <p class="train_list_from">天津西</p>
+                  <i class="fa  fa-arrow-circle-down"></i>
+                  <p class="train_list_to">苏州北</p>
+                </dt>
+                <dd>
+                                    <dfn>¥</dfn>
+                                    <span class="base_price">483.5</span>
+                </dd>
+              </a>
+            </dl>
+                      </div>
+                    <div class="train_list " style="display: none;">
+                        <dl>
+              <a href="http://www.tieyou.com/daigou/xiamenbei-shenzhenbei.html" target="_blank">
+                <dt>
+                  <p class="train_list_from">厦门北</p>
+                  <i class="fa  fa-arrow-circle-down"></i>
+                  <p class="train_list_to">深圳北</p>
+                </dt>
+                <dd>
+                                    <dfn>¥</dfn>
+                                    <span class="base_price">150.5</span>
+                </dd>
+              </a>
+            </dl>
+                        <dl>
+              <a href="http://www.tieyou.com/daigou/xiamenbei-fuzhou.html" target="_blank">
+                <dt>
+                  <p class="train_list_from">厦门北</p>
+                  <i class="fa  fa-arrow-circle-down"></i>
+                  <p class="train_list_to">福州</p>
+                </dt>
+                <dd>
+                                    <dfn>¥</dfn>
+                                    <span class="base_price">71.5</span>
+                </dd>
+              </a>
+            </dl>
+                        <dl>
+              <a href="http://www.tieyou.com/daigou/xiamenbei-hankou.html" target="_blank">
+                <dt>
+                  <p class="train_list_from">厦门北</p>
+                  <i class="fa  fa-arrow-circle-down"></i>
+                  <p class="train_list_to">汉口</p>
+                </dt>
+                <dd>
+                                    <dfn>¥</dfn>
+                                    <span class="base_price">313.0</span>
+                </dd>
+              </a>
+            </dl>
+                        <dl>
+              <a href="http://www.tieyou.com/daigou/xiamenbei-longyan.html" target="_blank">
+                <dt>
+                  <p class="train_list_from">厦门北</p>
+                  <i class="fa  fa-arrow-circle-down"></i>
+                  <p class="train_list_to">龙岩</p>
+                </dt>
+                <dd>
+                                    <dfn>¥</dfn>
+                                    <span class="base_price">45.5</span>
+                </dd>
+              </a>
+            </dl>
+                        <dl>
+              <a href="http://www.tieyou.com/daigou/xiamenbei-shanghaihongqiao.html" target="_blank">
+                <dt>
+                  <p class="train_list_from">厦门北</p>
+                  <i class="fa  fa-arrow-circle-down"></i>
+                  <p class="train_list_to">上海虹桥</p>
+                </dt>
+                <dd>
+                                    <dfn>¥</dfn>
+                                    <span class="base_price">328.0</span>
+                </dd>
+              </a>
+            </dl>
+                        <dl>
+              <a href="http://www.tieyou.com/daigou/xiamenbei-wuhan.html" target="_blank">
+                <dt>
+                  <p class="train_list_from">厦门北</p>
+                  <i class="fa  fa-arrow-circle-down"></i>
+                  <p class="train_list_to">武汉</p>
+                </dt>
+                <dd>
+                                    <dfn>¥</dfn>
+                                    <span class="base_price">302.5</span>
+                </dd>
+              </a>
+            </dl>
+                        <dl>
+              <a href="http://www.tieyou.com/daigou/xiamenbei-nanchang.html" target="_blank">
+                <dt>
+                  <p class="train_list_from">厦门北</p>
+                  <i class="fa  fa-arrow-circle-down"></i>
+                  <p class="train_list_to">南昌</p>
+                </dt>
+                <dd>
+                                    <dfn>¥</dfn>
+                                    <span class="base_price">202.0</span>
+                </dd>
+              </a>
+            </dl>
+                        <dl>
+              <a href="http://www.tieyou.com/daigou/xiamenbei-hangzhoudong.html" target="_blank">
+                <dt>
+                  <p class="train_list_from">厦门北</p>
+                  <i class="fa  fa-arrow-circle-down"></i>
+                  <p class="train_list_to">杭州东</p>
+                </dt>
+                <dd>
+                                    <dfn>¥</dfn>
+                                    <span class="base_price">281.5</span>
+                </dd>
+              </a>
+            </dl>
+                        <dl>
+              <a href="http://www.tieyou.com/daigou/xiamenbei-sanmingbei.html" target="_blank">
+                <dt>
+                  <p class="train_list_from">厦门北</p>
+                  <i class="fa  fa-arrow-circle-down"></i>
+                  <p class="train_list_to">三明北</p>
+                </dt>
+                <dd>
+                                    <dfn>¥</dfn>
+                                    <span class="base_price">98.5</span>
+                </dd>
+              </a>
+            </dl>
+                        <dl>
+              <a href="http://www.tieyou.com/daigou/xiamenbei-wenzhounan.html" target="_blank">
+                <dt>
+                  <p class="train_list_from">厦门北</p>
+                  <i class="fa  fa-arrow-circle-down"></i>
+                  <p class="train_list_to">温州南</p>
+                </dt>
+                <dd>
+                                    <dfn>¥</dfn>
+                                    <span class="base_price">152.0</span>
+                </dd>
+              </a>
+            </dl>
+                        <dl>
+              <a href="http://www.tieyou.com/daigou/xiamenbei-nanjingnan.html" target="_blank">
+                <dt>
+                  <p class="train_list_from">厦门北</p>
+                  <i class="fa  fa-arrow-circle-down"></i>
+                  <p class="train_list_to">南京南</p>
+                </dt>
+                <dd>
+                                    <dfn>¥</dfn>
+                                    <span class="base_price">360.5</span>
+                </dd>
+              </a>
+            </dl>
+                        <dl>
+              <a href="http://www.tieyou.com/daigou/xiamenbei-ningbo.html" target="_blank">
+                <dt>
+                  <p class="train_list_from">厦门北</p>
+                  <i class="fa  fa-arrow-circle-down"></i>
+                  <p class="train_list_to">宁波</p>
+                </dt>
+                <dd>
+                                    <dfn>¥</dfn>
+                                    <span class="base_price">238.0</span>
+                </dd>
+              </a>
+            </dl>
+                      </div>
+                    <div class="train_list " style="display: none;">
+                        <dl>
+              <a href="http://www.tieyou.com/daigou/wuhan-shenzhenbei.html" target="_blank">
+                <dt>
+                  <p class="train_list_from">武汉</p>
+                  <i class="fa  fa-arrow-circle-down"></i>
+                  <p class="train_list_to">深圳北</p>
+                </dt>
+                <dd>
+                                    <dfn>¥</dfn>
+                                    <span class="base_price">538.0</span>
+                </dd>
+              </a>
+            </dl>
+                        <dl>
+              <a href="http://www.tieyou.com/daigou/wuhan-shanghaihongqiao.html" target="_blank">
+                <dt>
+                  <p class="train_list_from">武汉</p>
+                  <i class="fa  fa-arrow-circle-down"></i>
+                  <p class="train_list_to">上海虹桥</p>
+                </dt>
+                <dd>
+                                    <dfn>¥</dfn>
+                                    <span class="base_price">302.5</span>
+                </dd>
+              </a>
+            </dl>
+                        <dl>
+              <a href="http://www.tieyou.com/daigou/wuhan-beijingxi.html" target="_blank">
+                <dt>
+                  <p class="train_list_from">武汉</p>
+                  <i class="fa  fa-arrow-circle-down"></i>
+                  <p class="train_list_to">北京西</p>
+                </dt>
+                <dd>
+                                    <dfn>¥</dfn>
+                                    <span class="base_price">520.5</span>
+                </dd>
+              </a>
+            </dl>
+                        <dl>
+              <a href="http://www.tieyou.com/daigou/wuhan-guangzhounan.html" target="_blank">
+                <dt>
+                  <p class="train_list_from">武汉</p>
+                  <i class="fa  fa-arrow-circle-down"></i>
+                  <p class="train_list_to">广州南</p>
+                </dt>
+                <dd>
+                                    <dfn>¥</dfn>
+                                    <span class="base_price">463.5</span>
+                </dd>
+              </a>
+            </dl>
+                        <dl>
+              <a href="http://www.tieyou.com/daigou/wuhan-fuzhou.html" target="_blank">
+                <dt>
+                  <p class="train_list_from">武汉</p>
+                  <i class="fa  fa-arrow-circle-down"></i>
+                  <p class="train_list_to">福州</p>
+                </dt>
+                <dd>
+                                    <dfn>¥</dfn>
+                                    <span class="base_price">261.5</span>
+                </dd>
+              </a>
+            </dl>
+                        <dl>
+              <a href="http://www.tieyou.com/daigou/wuhan-jinan.html" target="_blank">
+                <dt>
+                  <p class="train_list_from">武汉</p>
+                  <i class="fa  fa-arrow-circle-down"></i>
+                  <p class="train_list_to">济南</p>
+                </dt>
+                <dd>
+                                    <dfn>¥</dfn>
+                                    <span class="base_price">367.5</span>
+                </dd>
+              </a>
+            </dl>
+                        <dl>
+              <a href="http://www.tieyou.com/daigou/wuhan-xianbei.html" target="_blank">
+                <dt>
+                  <p class="train_list_from">武汉</p>
+                  <i class="fa  fa-arrow-circle-down"></i>
+                  <p class="train_list_to">西安北</p>
+                </dt>
+                <dd>
+                                    <dfn>¥</dfn>
+                                    <span class="base_price">454.5</span>
+                </dd>
+              </a>
+            </dl>
+                        <dl>
+              <a href="http://www.tieyou.com/daigou/wuhan-hangzhoudong.html" target="_blank">
+                <dt>
+                  <p class="train_list_from">武汉</p>
+                  <i class="fa  fa-arrow-circle-down"></i>
+                  <p class="train_list_to">杭州东</p>
+                </dt>
+                <dd>
+                                    <dfn>¥</dfn>
+                                    <span class="base_price">284.5</span>
+                </dd>
+              </a>
+            </dl>
+                        <dl>
+              <a href="http://www.tieyou.com/daigou/wuhan-shiyan.html" target="_blank">
+                <dt>
+                  <p class="train_list_from">武汉</p>
+                  <i class="fa  fa-arrow-circle-down"></i>
+                  <p class="train_list_to">十堰</p>
+                </dt>
+                <dd>
+                                    <dfn>¥</dfn>
+                                    <span class="base_price">149.0</span>
+                </dd>
+              </a>
+            </dl>
+                        <dl>
+              <a href="http://www.tieyou.com/daigou/wuhan-xuzhoudong.html" target="_blank">
+                <dt>
+                  <p class="train_list_from">武汉</p>
+                  <i class="fa  fa-arrow-circle-down"></i>
+                  <p class="train_list_to">徐州东</p>
+                </dt>
+                <dd>
+                                    <dfn>¥</dfn>
+                                    <span class="base_price">238.0</span>
+                </dd>
+              </a>
+            </dl>
+                        <dl>
+              <a href="http://www.tieyou.com/daigou/wuhan-taiyuan.html" target="_blank">
+                <dt>
+                  <p class="train_list_from">武汉</p>
+                  <i class="fa  fa-arrow-circle-down"></i>
+                  <p class="train_list_to">太原</p>
+                </dt>
+                <dd>
+                                    <dfn>¥</dfn>
+                                    <span class="base_price">480.5</span>
+                </dd>
+              </a>
+            </dl>
+                        <dl>
+              <a href="http://www.tieyou.com/daigou/wuhan-changshanan.html" target="_blank">
+                <dt>
+                  <p class="train_list_from">武汉</p>
+                  <i class="fa  fa-arrow-circle-down"></i>
+                  <p class="train_list_to">长沙南</p>
+                </dt>
+                <dd>
+                                    <dfn>¥</dfn>
+                                    <span class="base_price">164.5</span>
+                </dd>
+              </a>
+            </dl>
+                      </div>
+                    <div class="train_list " style="display: none;">
+                        <dl>
+              <a href="http://www.tieyou.com/daigou/hangzhoudong-zhengzhou.html" target="_blank">
+                <dt>
+                  <p class="train_list_from">杭州东</p>
+                  <i class="fa  fa-arrow-circle-down"></i>
+                  <p class="train_list_to">郑州</p>
+                </dt>
+                <dd>
+                                    <dfn>¥</dfn>
+                                    <span class="base_price">233.5</span>
+                </dd>
+              </a>
+            </dl>
+                        <dl>
+              <a href="http://www.tieyou.com/daigou/hangzhoudong-beijingnan.html" target="_blank">
+                <dt>
+                  <p class="train_list_from">杭州东</p>
+                  <i class="fa  fa-arrow-circle-down"></i>
+                  <p class="train_list_to">北京南</p>
+                </dt>
+                <dd>
+                                    <dfn>¥</dfn>
+                                    <span class="base_price">538.5</span>
+                </dd>
+              </a>
+            </dl>
+                        <dl>
+              <a href="http://www.tieyou.com/daigou/hangzhou-shanghaihongqiao.html" target="_blank">
+                <dt>
+                  <p class="train_list_from">杭州</p>
+                  <i class="fa  fa-arrow-circle-down"></i>
+                  <p class="train_list_to">上海虹桥</p>
+                </dt>
+                <dd>
+                                    <dfn>¥</dfn>
+                                    <span class="base_price">48.5</span>
+                </dd>
+              </a>
+            </dl>
+                        <dl>
+              <a href="http://www.tieyou.com/daigou/hangzhoudong-changsha.html" target="_blank">
+                <dt>
+                  <p class="train_list_from">杭州东</p>
+                  <i class="fa  fa-arrow-circle-down"></i>
+                  <p class="train_list_to">长沙</p>
+                </dt>
+                <dd>
+                                    <dfn>¥</dfn>
+                                    <span class="base_price">242.5</span>
+                </dd>
+              </a>
+            </dl>
+                        <dl>
+              <a href="http://www.tieyou.com/daigou/hangzhoudong-hefei.html" target="_blank">
+                <dt>
+                  <p class="train_list_from">杭州东</p>
+                  <i class="fa  fa-arrow-circle-down"></i>
+                  <p class="train_list_to">合肥</p>
+                </dt>
+                <dd>
+                                    <dfn>¥</dfn>
+                                    <span class="base_price">178.5</span>
+                </dd>
+              </a>
+            </dl>
+                        <dl>
+              <a href="http://www.tieyou.com/daigou/hangzhoudong-wuhan.html" target="_blank">
+                <dt>
+                  <p class="train_list_from">杭州东</p>
+                  <i class="fa  fa-arrow-circle-down"></i>
+                  <p class="train_list_to">武汉</p>
+                </dt>
+                <dd>
+                                    <dfn>¥</dfn>
+                                    <span class="base_price">284.5</span>
+                </dd>
+              </a>
+            </dl>
+                        <dl>
+              <a href="http://www.tieyou.com/daigou/hangzhoudong-nanjingnan.html" target="_blank">
+                <dt>
+                  <p class="train_list_from">杭州东</p>
+                  <i class="fa  fa-arrow-circle-down"></i>
+                  <p class="train_list_to">南京南</p>
+                </dt>
+                <dd>
+                                    <dfn>¥</dfn>
+                                    <span class="base_price">117.5</span>
+                </dd>
+              </a>
+            </dl>
+                        <dl>
+              <a href="http://www.tieyou.com/daigou/hangzhoudong-shangqiu.html" target="_blank">
+                <dt>
+                  <p class="train_list_from">杭州东</p>
+                  <i class="fa  fa-arrow-circle-down"></i>
+                  <p class="train_list_to">商丘</p>
+                </dt>
+                <dd>
+                                    <dfn>¥</dfn>
+                                    <span class="base_price">214.5</span>
+                </dd>
+              </a>
+            </dl>
+                        <dl>
+              <a href="http://www.tieyou.com/daigou/hangzhoudong-wenzhounan.html" target="_blank">
+                <dt>
+                  <p class="train_list_from">杭州东</p>
+                  <i class="fa  fa-arrow-circle-down"></i>
+                  <p class="train_list_to">温州南</p>
+                </dt>
+                <dd>
+                                    <dfn>¥</dfn>
+                                    <span class="base_price">153.0</span>
+                </dd>
+              </a>
+            </dl>
+                        <dl>
+              <a href="http://www.tieyou.com/daigou/hangzhoudong-nanchang.html" target="_blank">
+                <dt>
+                  <p class="train_list_from">杭州东</p>
+                  <i class="fa  fa-arrow-circle-down"></i>
+                  <p class="train_list_to">南昌</p>
+                </dt>
+                <dd>
+                                    <dfn>¥</dfn>
+                                    <span class="base_price">190.5</span>
+                </dd>
+              </a>
+            </dl>
+                        <dl>
+              <a href="http://www.tieyou.com/daigou/hangzhoudong-yuyaobei.html" target="_blank">
+                <dt>
+                  <p class="train_list_from">杭州东</p>
+                  <i class="fa  fa-arrow-circle-down"></i>
+                  <p class="train_list_to">余姚北</p>
+                </dt>
+                <dd>
+                                    <dfn>¥</dfn>
+                                    <span class="base_price">48.5</span>
+                </dd>
+              </a>
+            </dl>
+                        <dl>
+              <a href="http://www.tieyou.com/daigou/hangzhou-jinhuaxi.html" target="_blank">
+                <dt>
+                  <p class="train_list_from">杭州</p>
+                  <i class="fa  fa-arrow-circle-down"></i>
+                  <p class="train_list_to">金华西</p>
+                </dt>
+                <dd>
+                                    <dfn>¥</dfn>
+                                    <span class="base_price">54.5</span>
+                </dd>
+              </a>
+            </dl>
+                      </div>
+                          </div>
+<div class="train_list " cid="3" style="display:none;">
+                        <dl>
+              <a href="http://www.tieyou.com/daigou/guangzhounan-wuhan.html" target="_blank">
+                <dt>
+                  <p class="train_list_from">广州南</p>
+                  <i class="fa  fa-arrow-circle-down"></i>
+                  <p class="train_list_to">武汉</p>
+                </dt>
+                <dd>
+                                    <dfn>¥</dfn>
+                                    <span class="base_price">463.5</span>
+                </dd>
+              </a>
+            </dl>
+                        <dl>
+              <a href="http://www.tieyou.com/daigou/guangzhounan-chaoshan.html" target="_blank">
+                <dt>
+                  <p class="train_list_from">广州南</p>
+                  <i class="fa  fa-arrow-circle-down"></i>
+                  <p class="train_list_to">潮汕</p>
+                </dt>
+                <dd>
+                                    <dfn>¥</dfn>
+                                    <span class="base_price">164.0</span>
+                </dd>
+              </a>
+            </dl>
+                        <dl>
+              <a href="http://www.tieyou.com/daigou/guangzhounan-yueyangdong.html" target="_blank">
+                <dt>
+                  <p class="train_list_from">广州南</p>
+                  <i class="fa  fa-arrow-circle-down"></i>
+                  <p class="train_list_to">岳阳东</p>
+                </dt>
+                <dd>
+                                    <dfn>¥</dfn>
+                                    <span class="base_price">373.5</span>
+                </dd>
+              </a>
+            </dl>
+                        <dl>
+              <a href="http://www.tieyou.com/daigou/guangzhounan-hengyangdong.html" target="_blank">
+                <dt>
+                  <p class="train_list_from">广州南</p>
+                  <i class="fa  fa-arrow-circle-down"></i>
+                  <p class="train_list_to">衡阳东</p>
+                </dt>
+                <dd>
+                                    <dfn>¥</dfn>
+                                    <span class="base_price">244.0</span>
+                </dd>
+              </a>
+            </dl>
+                        <dl>
+              <a href="http://www.tieyou.com/daigou/guangzhounan-beijingxi.html" target="_blank">
+                <dt>
+                  <p class="train_list_from">广州南</p>
+                  <i class="fa  fa-arrow-circle-down"></i>
+                  <p class="train_list_to">北京西</p>
+                </dt>
+                <dd>
+                                    <dfn>¥</dfn>
+                                    <span class="base_price">862.0</span>
+                </dd>
+              </a>
+            </dl>
+                        <dl>
+              <a href="http://www.tieyou.com/daigou/guangzhounan-shenzhenbei.html" target="_blank">
+                <dt>
+                  <p class="train_list_from">广州南</p>
+                  <i class="fa  fa-arrow-circle-down"></i>
+                  <p class="train_list_to">深圳北</p>
+                </dt>
+                <dd>
+                                    <dfn>¥</dfn>
+                                    <span class="base_price">74.5</span>
+                </dd>
+              </a>
+            </dl>
+                        <dl>
+              <a href="http://www.tieyou.com/daigou/guangzhounan-changshanan.html" target="_blank">
+                <dt>
+                  <p class="train_list_from">广州南</p>
+                  <i class="fa  fa-arrow-circle-down"></i>
+                  <p class="train_list_to">长沙南</p>
+                </dt>
+                <dd>
+                                    <dfn>¥</dfn>
+                                    <span class="base_price">314.0</span>
+                </dd>
+              </a>
+            </dl>
+                        <dl>
+              <a href="http://www.tieyou.com/daigou/guangzhounan-puning.html" target="_blank">
+                <dt>
+                  <p class="train_list_from">广州南</p>
+                  <i class="fa  fa-arrow-circle-down"></i>
+                  <p class="train_list_to">普宁</p>
+                </dt>
+                <dd>
+                                    <dfn>¥</dfn>
+                                    <span class="base_price">148.5</span>
+                </dd>
+              </a>
+            </dl>
+                        <dl>
+              <a href="http://www.tieyou.com/daigou/guangzhounan-zhengzhoudong.html" target="_blank">
+                <dt>
+                  <p class="train_list_from">广州南</p>
+                  <i class="fa  fa-arrow-circle-down"></i>
+                  <p class="train_list_to">郑州东</p>
+                </dt>
+                <dd>
+                                    <dfn>¥</dfn>
+                                    <span class="base_price">653.0</span>
+                </dd>
+              </a>
+            </dl>
+                        <dl>
+              <a href="http://www.tieyou.com/daigou/guangzhounan-zhuhai.html" target="_blank">
+                <dt>
+                  <p class="train_list_from">广州南</p>
+                  <i class="fa  fa-arrow-circle-down"></i>
+                  <p class="train_list_to">珠海</p>
+                </dt>
+                <dd>
+                                    <dfn>¥</dfn>
+                                    <span class="base_price">70.0</span>
+                </dd>
+              </a>
+            </dl>
+                        <dl>
+              <a href="http://www.tieyou.com/daigou/guangzhounan-xianbei.html" target="_blank">
+                <dt>
+                  <p class="train_list_from">广州南</p>
+                  <i class="fa  fa-arrow-circle-down"></i>
+                  <p class="train_list_to">西安北</p>
+                </dt>
+                <dd>
+                                    <dfn>¥</dfn>
+                                    <span class="base_price">813.5</span>
+                </dd>
+              </a>
+            </dl>
+                        <dl>
+              <a href="http://www.tieyou.com/daigou/guangzhounan-zhuzhouxi.html" target="_blank">
+                <dt>
+                  <p class="train_list_from">广州南</p>
+                  <i class="fa  fa-arrow-circle-down"></i>
+                  <p class="train_list_to">株洲西</p>
+                </dt>
+                <dd>
+                                    <dfn>¥</dfn>
+                                    <span class="base_price">294.0</span>
+                </dd>
+              </a>
+            </dl>
+                      </div>
+<div class="train_list " cid="2" style="display: none;">
+                        <dl>
+              <a href="http://www.tieyou.com/daigou/shanghaihongqiao-beijingnan.html" target="_blank">
+                <dt>
+                  <p class="train_list_from">上海虹桥</p>
+                  <i class="fa  fa-arrow-circle-down"></i>
+                  <p class="train_list_to">北京南</p>
+                </dt>
+                <dd>
+                                    <dfn>¥</dfn>
+                                    <span class="base_price">553.0</span>
+                </dd>
+              </a>
+            </dl>
+                        <dl>
+              <a href="http://www.tieyou.com/daigou/shanghaihongqiao-xianbei.html" target="_blank">
+                <dt>
+                  <p class="train_list_from">上海虹桥</p>
+                  <i class="fa  fa-arrow-circle-down"></i>
+                  <p class="train_list_to">西安北</p>
+                </dt>
+                <dd>
+                                    <dfn>¥</dfn>
+                                    <span class="base_price">338.0</span>
+                </dd>
+              </a>
+            </dl>
+                        <dl>
+              <a href="http://www.tieyou.com/daigou/shanghaihongqiao-zhengzhou.html" target="_blank">
+                <dt>
+                  <p class="train_list_from">上海虹桥</p>
+                  <i class="fa  fa-arrow-circle-down"></i>
+                  <p class="train_list_to">郑州</p>
+                </dt>
+                <dd>
+                                    <dfn>¥</dfn>
+                                    <span class="base_price">236.5</span>
+                </dd>
+              </a>
+            </dl>
+                        <dl>
+              <a href="http://www.tieyou.com/daigou/shanghaihongqiao-hangzhou.html" target="_blank">
+                <dt>
+                  <p class="train_list_from">上海虹桥</p>
+                  <i class="fa  fa-arrow-circle-down"></i>
+                  <p class="train_list_to">杭州</p>
+                </dt>
+                <dd>
+                                    <dfn>¥</dfn>
+                                    <span class="base_price">77.5</span>
+                </dd>
+              </a>
+            </dl>
+                        <dl>
+              <a href="http://www.tieyou.com/daigou/shanghaihongqiao-hankou.html" target="_blank">
+                <dt>
+                  <p class="train_list_from">上海虹桥</p>
+                  <i class="fa  fa-arrow-circle-down"></i>
+                  <p class="train_list_to">汉口</p>
+                </dt>
+                <dd>
+                                    <dfn>¥</dfn>
+                                    <span class="base_price">258.0</span>
+                </dd>
+              </a>
+            </dl>
+                        <dl>
+              <a href="http://www.tieyou.com/daigou/shanghaihongqiao-nanchang.html" target="_blank">
+                <dt>
+                  <p class="train_list_from">上海虹桥</p>
+                  <i class="fa  fa-arrow-circle-down"></i>
+                  <p class="train_list_to">南昌</p>
+                </dt>
+                <dd>
+                                    <dfn>¥</dfn>
+                                    <span class="base_price">237.0</span>
+                </dd>
+              </a>
+            </dl>
+                        <dl>
+              <a href="http://www.tieyou.com/daigou/shanghaihongqiao-nanjingnan.html" target="_blank">
+                <dt>
+                  <p class="train_list_from">上海虹桥</p>
+                  <i class="fa  fa-arrow-circle-down"></i>
+                  <p class="train_list_to">南京南</p>
+                </dt>
+                <dd>
+                                    <dfn>¥</dfn>
+                                    <span class="base_price">134.5</span>
+                </dd>
+              </a>
+            </dl>
+                        <dl>
+              <a href="http://www.tieyou.com/daigou/shanghaihongqiao-ningbo.html" target="_blank">
+                <dt>
+                  <p class="train_list_from">上海虹桥</p>
+                  <i class="fa  fa-arrow-circle-down"></i>
+                  <p class="train_list_to">宁波</p>
+                </dt>
+                <dd>
+                                    <dfn>¥</dfn>
+                                    <span class="base_price">144.0</span>
+                </dd>
+              </a>
+            </dl>
+                        <dl>
+              <a href="http://www.tieyou.com/daigou/shanghaihongqiao-wenzhounan.html" target="_blank">
+                <dt>
+                  <p class="train_list_from">上海虹桥</p>
+                  <i class="fa  fa-arrow-circle-down"></i>
+                  <p class="train_list_to">温州南</p>
+                </dt>
+                <dd>
+                                    <dfn>¥</dfn>
+                                    <span class="base_price">226.0</span>
+                </dd>
+              </a>
+            </dl>
+                        <dl>
+              <a href="http://www.tieyou.com/daigou/shanghaihongqiao-hefei.html" target="_blank">
+                <dt>
+                  <p class="train_list_from">上海虹桥</p>
+                  <i class="fa  fa-arrow-circle-down"></i>
+                  <p class="train_list_to">合肥</p>
+                </dt>
+                <dd>
+                                    <dfn>¥</dfn>
+                                    <span class="base_price">156.0</span>
+                </dd>
+              </a>
+            </dl>
+                        <dl>
+              <a href="http://www.tieyou.com/daigou/shanghaihongqiao-changsha.html" target="_blank">
+                <dt>
+                  <p class="train_list_from">上海虹桥</p>
+                  <i class="fa  fa-arrow-circle-down"></i>
+                  <p class="train_list_to">长沙</p>
+                </dt>
+                <dd>
+                                    <dfn>¥</dfn>
+                                    <span class="base_price">257.5</span>
+                </dd>
+              </a>
+            </dl>
+                        <dl>
+              <a href="http://www.tieyou.com/daigou/shanghaihongqiao-wuchang.html" target="_blank">
+                <dt>
+                  <p class="train_list_from">上海虹桥</p>
+                  <i class="fa  fa-arrow-circle-down"></i>
+                  <p class="train_list_to">武昌</p>
+                </dt>
+                <dd>
+                                    <dfn>¥</dfn>
+                                    <span class="base_price">269.0</span>
+                </dd>
+              </a>
+            </dl>
+                      </div>
+
+<div class="train_list " cid="4" style="display: none;">
+                        <dl>
+              <a href="http://www.tieyou.com/daigou/tianjin-beijingnan.html" target="_blank">
+                <dt>
+                  <p class="train_list_from">天津</p>
+                  <i class="fa  fa-arrow-circle-down"></i>
+                  <p class="train_list_to">北京南</p>
+                </dt>
+                <dd>
+                                    <dfn>¥</dfn>
+                                    <span class="base_price">54.5</span>
+                </dd>
+              </a>
+            </dl>
+                        <dl>
+              <a href="http://www.tieyou.com/daigou/tianjinxi-qingdao.html" target="_blank">
+                <dt>
+                  <p class="train_list_from">天津西</p>
+                  <i class="fa  fa-arrow-circle-down"></i>
+                  <p class="train_list_to">青岛</p>
+                </dt>
+                <dd>
+                                    <dfn>¥</dfn>
+                                    <span class="base_price">219.0</span>
+                </dd>
+              </a>
+            </dl>
+                        <dl>
+              <a href="http://www.tieyou.com/daigou/tianjinxi-shanghaihongqiao.html" target="_blank">
+                <dt>
+                  <p class="train_list_from">天津西</p>
+                  <i class="fa  fa-arrow-circle-down"></i>
+                  <p class="train_list_to">上海虹桥</p>
+                </dt>
+                <dd>
+                                    <dfn>¥</dfn>
+                                    <span class="base_price">513.5</span>
+                </dd>
+              </a>
+            </dl>
+                        <dl>
+              <a href="http://www.tieyou.com/daigou/tianjinnan-hefei.html" target="_blank">
+                <dt>
+                  <p class="train_list_from">天津南</p>
+                  <i class="fa  fa-arrow-circle-down"></i>
+                  <p class="train_list_to">合肥</p>
+                </dt>
+                <dd>
+                                    <dfn>¥</dfn>
+                                    <span class="base_price">G29</span>
+                </dd>
+              </a>
+            </dl>
+                        <dl>
+              <a href="http://www.tieyou.com/daigou/tianjin-shenyangbei.html" target="_blank">
+                <dt>
+                  <p class="train_list_from">天津</p>
+                  <i class="fa  fa-arrow-circle-down"></i>
+                  <p class="train_list_to">沈阳北</p>
+                </dt>
+                <dd>
+                                    <dfn>¥</dfn>
+                                    <span class="base_price">240.5</span>
+                </dd>
+              </a>
+            </dl>
+                        <dl>
+              <a href="http://www.tieyou.com/daigou/tianjinxi-ningbo.html" target="_blank">
+                <dt>
+                  <p class="train_list_from">天津西</p>
+                  <i class="fa  fa-arrow-circle-down"></i>
+                  <p class="train_list_to">宁波</p>
+                </dt>
+                <dd>
+                                    <dfn>¥</dfn>
+                                    <span class="base_price">557.0</span>
+                </dd>
+              </a>
+            </dl>
+                        <dl>
+              <a href="http://www.tieyou.com/daigou/tianjinxi-xuzhoudong.html" target="_blank">
+                <dt>
+                  <p class="train_list_from">天津西</p>
+                  <i class="fa  fa-arrow-circle-down"></i>
+                  <p class="train_list_to">徐州东</p>
+                </dt>
+                <dd>
+                                    <dfn>¥</dfn>
+                                    <span class="base_price">264.0</span>
+                </dd>
+              </a>
+            </dl>
+                        <dl>
+              <a href="http://www.tieyou.com/daigou/tianjinxi-nanjingnan.html" target="_blank">
+                <dt>
+                  <p class="train_list_from">天津西</p>
+                  <i class="fa  fa-arrow-circle-down"></i>
+                  <p class="train_list_to">南京南</p>
+                </dt>
+                <dd>
+                                    <dfn>¥</dfn>
+                                    <span class="base_price">403.5</span>
+                </dd>
+              </a>
+            </dl>
+                        <dl>
+              <a href="http://www.tieyou.com/daigou/tianjinxi-hangzhoudong.html" target="_blank">
+                <dt>
+                  <p class="train_list_from">天津西</p>
+                  <i class="fa  fa-arrow-circle-down"></i>
+                  <p class="train_list_to">杭州东</p>
+                </dt>
+                <dd>
+                                    <dfn>¥</dfn>
+                                    <span class="base_price">500.0</span>
+                </dd>
+              </a>
+            </dl>
+                        <dl>
+              <a href="http://www.tieyou.com/daigou/tianjinxi-weifang.html" target="_blank">
+                <dt>
+                  <p class="train_list_from">天津西</p>
+                  <i class="fa  fa-arrow-circle-down"></i>
+                  <p class="train_list_to">潍坊</p>
+                </dt>
+                <dd>
+                                    <dfn>¥</dfn>
+                                    <span class="base_price">164.0</span>
+                </dd>
+              </a>
+            </dl>
+                        <dl>
+              <a href="http://www.tieyou.com/daigou/tianjinxi-haerbinxi.html" target="_blank">
+                <dt>
+                  <p class="train_list_from">天津西</p>
+                  <i class="fa  fa-arrow-circle-down"></i>
+                  <p class="train_list_to">哈尔滨西</p>
+                </dt>
+                <dd>
+                                    <dfn>¥</dfn>
+                                    <span class="base_price">433.5</span>
+                </dd>
+              </a>
+            </dl>
+                        <dl>
+              <a href="http://www.tieyou.com/daigou/tianjinxi-suzhoubei.html" target="_blank">
+                <dt>
+                  <p class="train_list_from">天津西</p>
+                  <i class="fa  fa-arrow-circle-down"></i>
+                  <p class="train_list_to">苏州北</p>
+                </dt>
+                <dd>
+                                    <dfn>¥</dfn>
+                                    <span class="base_price">483.5</span>
+                </dd>
+              </a>
+            </dl>
+                      </div>
+
+
+    </section>
+ 
+
+    </section>
+    <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->
+
+  <!-- Main Footer -->
+  <footer class="main-footer">
+    <!-- To the right -->
+    <div class="pull-right hidden-xs">
+      所有
+    </div>
+    <!-- Default to the left -->
+    <strong>Copyright &copy; 2017 <a href="#">Group7</a>.</strong> All rights reserved.
+  </footer>
+
+  <!-- Control Sidebar -->
+  <aside class="control-sidebar control-sidebar-dark">
+    <!-- Create the tabs -->
+    <ul class="nav nav-tabs nav-justified control-sidebar-tabs">
+      <li class="active"><a href="#control-sidebar-home-tab" data-toggle="tab"><i class="fa fa-home"></i></a></li>
+      <li><a href="#control-sidebar-settings-tab" data-toggle="tab"><i class="fa fa-gears"></i></a></li>
+    </ul>
+    <!-- Tab panes -->
+
+          <!-- /.form-group -->
+        </form>
+      </div>
+      <!-- /.tab-pane -->
+    </div>
+  </aside>
+  <!-- /.control-sidebar -->
+  <!-- Add the sidebar's background. This div must be placed
+  immediately after the control sidebar -->
+  <div class="control-sidebar-bg"></div>
+</div>
+<!-- ./wrapper -->
+
+<!-- REQUIRED JS SCRIPTS -->
+
+<!-- jQuery 3 -->
+<script src="bower_components/jquery/dist/jquery.min.js"></script>
+<!-- Bootstrap 3.3.7 -->
+<script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<!-- AdminLTE App -->
+<script src="dist/js/adminlte.min.js"></script>
+
+<!-- Optionally, you can add Slimscroll and FastClick plugins.
+     Both of these plugins are recommended to enhance the
+     user experience. -->
+</body>
+</html>

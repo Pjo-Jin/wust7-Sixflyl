@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<!--
+This is a starter template page. Use this page to start your new project from
+scratch. This page gets rid of all links and provides the needed markup only.
+-->
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>小黄牛车票网</title>
+  <!-- Tell the browser to be responsive to screen width -->
+  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+  <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.min.css">
+  <!-- Ionicons -->
+  <link rel="stylesheet" href="bower_components/Ionicons/css/ionicons.min.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="dist/css/AdminLTE.css">
+  <!-- AdminLTE Skins. We have chosen the skin-blue for this starter
+        page. However, you can choose any other skin. Make sure you
+        apply the skin class to the body tag so the changes take effect. -->
+  <link rel="stylesheet" href="dist/css/skins/skin-blue.css">
+
+  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  <!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+  <![endif]-->
+
+  <!-- Google Font -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+
+  <script type="text/javascript" src="jquery.min.js"></script>
+  <style type="text/css">
+
+
+    .content{
+      background: rgba(255,255,255,0.3);
+      margin-left:40px;
+      width:650px;
+
+      border-bottom: 2px solid #DCDCDC;
+      border-top: 3px solid blue;
+      border-radius: 5px;
+      float: left;
+    }
+    .item_cont,.item_cont2{
+      width: 540px;
+      margin-top:19px;
+      
+    }
+    .item_cont2{
+      margin-top: 30px;
+    }
+
+    .item_cont ul{
+      width:540px;
+      height:140px;
+      float: left;
+    }
+
+    .item_cont ul li{
+      display:block;
+    }
+    .item_cont2 ul{
+      width:540px;
+      height: 180px;
+      float: left;
+    }
+
+    .input_city,
+    .input_date,
+    .input_blank,
+    .input_adds{
+      width:240px;
+      float: left;
+      padding:0 20px 15px 10px;
+    }
+
+    .input_blank{
+      height: 36px
+    }
+
+    .input_city input,
+    .input_date input,
+    .input_adds input{
+      width: 239px;
+      height: 35px;
+      float:left;
+      background:#F1F1EF;
+      border-left: 1px solid #C2C2C0;
+      border-top: 1px solid #C2C2C0;
+      text-indent: 8px;
+      line-height:35px;
+      font-size: 14px;
+      color: #999 
+    }
+
+    .input_city input:focus,
+    .input_date input:focus,
+    .input_adds input:focus{
+      border-left: 1px solid #737372;
+      border-top: 1px solid #737372;
+      color: #333
+    }
+
+    .input_date input{
+      text-indent: 35px
+    }
+
+    .input_city input.warm,
+    .input_date input.warm,
+    .input_adds input.warm{
+      background:#FFE4E2;
+      border-left: 1px solid #DA0200;
+      border-top: 1px solid #DA0200;
+      color: #DA0200 ;
+    }
+
+    .input_city input.disabled,
+    .input_date input.disabled,
+    .input_adds input.disabled{
+      background:#D4D4D0;
+      border-left: 1px solid #C2C2C0;
+      border-top: 1px solid #C2C2C0;
+      color: #999;
+    }
+
+    .input_city input.txt,
+    .input_date input.txt{
+      color: #333;
+    }
+
+    .input_city{
+      position: relative;
+    }
+
+    .input_adds{
+      width: 510px;
+    }
+
+    .input_adds input{
+      width: 509px;
+    }
+
+    .input_city .hotcity_txt,
+    .input_date .date_txt,
+    .adds_txt{
+      width:50px;
+      height: 35px;
+      padding-right:8px;
+      line-height: 35px;
+      color: #999;
+      text-align: right;
+      float: right;
+      margin-top: -35px;
+      cursor: pointer;
+    }
+
+    .input_date .date_ico{
+      width: 19px;
+      height: 15px;
+      padding-top:8px;
+      margin:-29px 0 0 8px;
+      float:left;
+      background: url(../images/ico_2014.gif) 0 -75px no-repeat;
+      text-align:center;
+      line-height: 45px;
+      font: normal 11px tahoma;
+      color:#9A9A98 ;
+    }
+    .input_city .chage{
+      width: 16px;
+      height: 50px;
+      position: absolute;
+      background:url(../images/index_2014.gif) -5px -120px;
+      top:19px;
+      right:0;
+      cursor: pointer;
+    }
+    .input_city .chage:hover{
+      background-position: -22px -120px;
+    }
+    .input_city .chage:active{
+      background-position: -40px -120px;
+    }
+    .item_cont .index_btn,
+    .item_cont2 .index_btn{
+      width:239px;
+      height:49px;
+      float:right;
+      color:#fff;
+      font-size: 25px;
+      letter-spacing:10px;
+      line-height: 48px;
+    }
+    .btn_orage{
+      background:#EE842E;
+      border:none;
+      border-bottom:
+      1px solid #D4551A;
+      color: #fff;
+      cursor: pointer;
+    }
+    .btn_orage:hover{
+      background:#D4551A ;
+    }
+    .btn_orage:active{
+      background:#BA3800 ;
+    }
+
+  </style>
+
+  <script type="text/javascript">
+function showCity(ID)
+{
+  try
+  {
+    document.getElementById(ID).value=""; 
+    _CloseAdmit_  = false;
+    _InputID_   = ID;
+    var ListStr   = '<table width="350" border="0" cellspacing="0" cellpadding="0" style="border:1px solid #E0E2F0;background: #fff;color: #353535;position: fixed;text-align: center;padding-bottom:3px;">'
+              +'<tr>'
+                +'<th colspan="5"><h4 style="font-size:12px;margin-bottom: 5px;background: #EEF1F4;padding: 0 10px;line-height: 2.0em;text-align:left">热门城市<span style="font-weight: normal;margin-left: 10px;color: #999">可直接选择城市或输入城市全拼、简拼、中文</span></h4>'
+                +'<a href="javascript:void(0);" onClick="JavaScript:_HideList_();" style="position: absolute;right:4px;top:3px;width:13px;height:13px;background: url(http://img3.tieyou.com/images/header.gif) -372px -128px; text-indent: -9999px;">关闭</a>'
+                +'</th>'
+                +'</tr>'
+
+    var StrArray="北京，上海，广州，深圳，杭州，苏州，南京，天津，成都，重庆，西安，郑州，长沙，武汉，南昌，青岛，济南，大连，沈阳，长春，哈尔滨，洛阳，兰州，合肥，太原，海口，南宁，福州，昆明，乌鲁木齐".split("，");
+    ListStr     = ListStr+'<tr>';
+
+    for(var i=0;i<StrArray.length;i++)
+    {
+      if(i!=0&&i%5==0)
+      {
+        ListStr = ListStr+'</tr><tr>';    
+      }
+      ListStr   = ListStr+'<td  height="25" width="70" onMouseOver="this.style.backgroundColor=\'#C5E7F6\'" onMouseOut="this.style.backgroundColor=\'\'" style="cursor:pointer; color:#666;text-decoration: none;font-size: 12px;"onClick="JavaScript:_GetValue_(\''+ID+'\',\''+StrArray[i]+'\')">'+StrArray[i]+'</td>';
+    }
+    ListStr     = ListStr+'</table>';
+    var ListObj   = document.getElementById("cityList");
+    ListObj.innerHTML = ListStr;
+    
+    var TextTop=0;
+    var TextLeft=0;
+    var TextID    = document.getElementById(ID);
+    var TextHeight  = TextID.clientHeight;
+    while(TextID&&TextID.tagName!="body")
+    {
+      TextTop   = TextTop+TextID.offsetTop;
+      TextLeft  = TextLeft+TextID.offsetLeft;
+      TextID    = TextID.offsetParent;
+    }
+    ListObj.style.top = TextTop+TextHeight+5+"px";
+    ListObj.style.left  = TextLeft+"px";
+    ListObj.style.display = "inline";
+    ListObj.style.position = "absolute";
+  }
+  catch(Err)
+  {
+    //alert(Err.description);
+  }
+}
+
+function _GetValue_(ID,Value)
+{
+  _CloseAdmit_  = true;
+  if(typeof(Value)=="string"&&Value!="")
+  {
+    //hkshadow
+    if(ID == 'hotelCity'){
+      getHotelCityName(Value);
+    }
+    var cityInput = document.getElementById(ID);
+      cityInput.value = Value;
+      cityInput.className += " txt";
+      if(cityInput.onchange != undefined){
+        cityInput.onchange();
+      }
+  }
+  _HideList_();
+}
+
+function _HideList_()
+{
+  if(_CloseAdmit_ )
+  {
+    document.getElementById("cityList").style.display = "none";
+    _InputID_ ="";
+  }
+}
+function hideCity()
+{
+  _CloseAdmit_  = true;
+  setTimeout("_HideList_()",200);
+}
+  </script>
+
+  <style type="text/css">
+    #from{
+      margin:20px;
+    }
+    .lead_to{
+      margin:20px;
+    }
+  </style>
+
+</head>
+<!--
+BODY TAG OPTIONS:
+=================
+Apply one or more of the following classes to get the
+desired effect
+|---------------------------------------------------------|
+| SKINS         | skin-blue                               |
+|               | skin-black                              |
+|               | skin-purple                             |
+|               | skin-yellow                             |
+|               | skin-red                                |
+|               | skin-green                              |
+|---------------------------------------------------------|
+|LAYOUT OPTIONS | fixed                                   |
+|               | layout-boxed                            |
+|               | layout-top-nav                          |
+|               | sidebar-collapse                        |
+|               | sidebar-mini                            |
+|---------------------------------------------------------|
+-->
+<body class="hold-transition skin-blue sidebar-mini">
+<div class="wrapper">
+
+  <!-- Main Header -->
+  <header class="main-header">
+
+    <!-- Logo -->
+    <a href="offical.html" class="logo">
+      <!-- mini logo for sidebar mini 50x50 pixels -->
+      <span class="logo-mini"><b>A</b>LT</span>
+      <!-- logo for regular state and mobile devices -->
+      <span class="logo-lg"><b>小黄牛车票网</b></span>
+    </a>
+
+    <!-- Header Navbar -->
+    <nav class="navbar navbar-static-top" role="navigation">
+      <!-- Sidebar toggle button-->
+      <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
+        <span class="sr-only">Toggle navigation</span>
+      </a>
+      <!-- Navbar Right Menu -->
+      <div class="navbar-custom-menu">
+        <ul class="nav navbar-nav">
+          <!-- Messages: style can be found in dropdown.less-->
+          <li class="dropdown messages-menu">
+            <!-- Menu toggle button -->
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+              <i class="fa fa-envelope-o"></i>
+              <span class="label label-success">1</span>
+            </a>
+            <ul class="dropdown-menu">
+              <li class="header">您有一条消息~</li>
+              <li>
+                <!-- inner menu: contains the messages -->
+                <ul class="menu">
+                  <li><!-- start message -->
+                    <a href="#">
+                      <div class="pull-left">
+                        <!-- User Image -->
+                        <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+                      </div>
+                      <!-- Message title and timestamp -->
+                      <h4>
+                        铁路客户服务中心
+                        <small><i class="fa fa-clock-o"></i> 5 mins</small>
+                      </h4>
+                      <!-- The message -->
+                      <p>欢迎乘坐G584列客车，始发站武汉，终点站杭州东，历时4时59分，祝您旅途愉快~</p>
+                    </a>
+                  </li>
+                  <!-- end message -->
+                </ul>
+                <!-- /.menu -->
+              </li>
+              <li class="footer"><a href="#">忽略所有消息</a></li>
+            </ul>
+          </li>
+          <!-- /.messages-menu -->
+
+          <!-- Notifications Menu -->
+          <li class="dropdown notifications-menu">
+            <!-- Menu toggle button -->
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+              <i class="fa fa-bell-o"></i>
+              <span class="label label-warning">1</span>
+            </a>
+            <ul class="dropdown-menu">
+              <li class="header">提醒</li>
+              <li>
+                <!-- Inner Menu: contains the notifications -->
+                <ul class="menu">
+                  <li><!-- start notification -->
+                    <a href="#">
+                      <i class="fa fa-users text-aqua"></i> 请提前准备好身份证、车票及相关物品，火车出发前五分钟停止检票，请于7月11日9:00前提前进入车站。
+                    </a>
+                  </li>
+                  <!-- end notification -->
+                </ul>
+              </li>
+              <li class="footer"><a href="#">查看所有</a></li>
+            </ul>
+          </li>
+          <!-- Tasks Menu -->
+          <li class="dropdown tasks-menu">
+            <!-- Menu Toggle Button -->
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+              <i class="fa fa-flag-o"></i>
+              <span class="label label-danger">1</span>
+            </a>
+            <ul class="dropdown-menu">
+              <li class="header">您有一份订单待使用</li>
+              <li>
+                <!-- Inner menu: contains the tasks -->
+                <ul class="menu">
+                  <li><!-- Task item -->
+                    <a href="#">
+                      <!-- Task title and progress text -->
+                      <h3>
+                        武汉->杭州东
+                        <small class="pull-right">20%</small>
+                      </h3>
+                      <!-- The progress bar -->
+                      <div class="progress xs">
+                        <!-- Change the css width attribute to simulate progress -->
+                        <div class="progress-bar progress-bar-aqua" style="width: 20%" role="progressbar"
+                             aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
+                          <span class="sr-only">20% Complete</span>
+                        </div>
+                      </div>
+                    </a>
+                  </li>
+                  <!-- end task item -->
+                </ul>
+              </li>
+              <li class="footer">
+                <a href="#">查看所有订单</a>
+              </li>
+            </ul>
+          </li>
+          <!-- User Account Menu -->
+          <li class="dropdown user user-menu">
+            <!-- Menu Toggle Button -->
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+              <!-- The user image in the navbar-->
+              <img src="main.jpg" class="user-image" alt="User Image">
+              <!-- hidden-xs hides the username on small devices so only the image appears. -->
+              <span class="hidden-xs">我的</span>
+            </a>
+            <ul class="dropdown-menu">
+              <!-- The user image in the menu -->
+              <li class="user-header">
+                <img src="main.jpg" class="img-circle" alt="User Image">
+
+                <p>
+                  Sixflyl-Group7
+                  <small>状态：已登录</small>
+                </p>
+              </li>
+              <!-- Menu Body -->
+              <li class="user-body">
+                <div class="row">
+                  <div class="col-xs-4 text-center">
+                    <a href="#">修改信息</a>
+                  </div>
+                  <div class="col-xs-4 text-center">
+                    <a href="#">订单详情</a>
+                  </div>
+                  <div class="col-xs-4 text-center">
+                    <a href="#">我的好友</a>
+                  </div>
+                </div>
+                <!-- /.row -->
+              </li>
+              <!-- Menu Footer-->
+              <li class="user-footer">
+                <div class="pull-left">
+                  <a href="#" class="btn btn-default btn-flat">人物简介</a>
+                </div>
+                <div class="pull-right">
+                  <a href="#" class="btn btn-default btn-flat">退出登录</a>
+                </div>
+              </li>
+            </ul>
+          </li>
+          <!-- Control Sidebar Toggle Button -->
+          <li>
+            <a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+  <!-- Left side column. contains the logo and sidebar -->
+  <aside class="main-sidebar" >
+
+    <!-- sidebar: style can be found in sidebar.less -->
+    <section class="sidebar">
+
+      <!-- Sidebar user panel (optional) -->
+      <div class="user-panel">
+        <div class="pull-left image">
+          <img src="main.jpg" class="img-circle" alt="User Image">
+        </div>
+        <div class="pull-left info">
+          <p><font size="4"  color="black">Sixflyl-Group7</font></p>
+          <!-- Status -->
+          <font size="1" color="black" >在线</font> 
+        </div>
+      </div>
+
+      <!-- search form (Optional) -->
+      <form action="#" method="get" class="sidebar-form">
+        <div class="input-group">
+          <input type="text" name="q" class="form-control" placeholder="搜索...">
+          <span class="input-group-btn">
+              <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i>
+              </button>
+            </span>
+        </div>
+      </form>
+      <!-- /.search form -->
+
+      <!-- Sidebar Menu -->
+      <ul class="sidebar-menu" data-widget="tree">
+        <li class="header">服务</li>
+        <!-- Optionally, you can add icons to the links -->
+       <li class="treeview">
+          <a href="#"><i class="fa fa-link"></i> <span>查询</span>
+            <span class="pull-right-container">
+                <i class="fa fa-angle-left pull-right"></i>
+              </span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="#">按车次查询</a></li>
+            <li><a href="#">按出发地/目的地查询</a></li>
+          </ul>
+        </li>
+        <li class="active"><a href="buy-ticket.html"><i class="fa fa-link"></i> <span>购票</span></a></li>
+        <li class="active"><a href="change-ticket.html"><i class="fa fa-link"></i> <span>改签</span></a></li>
+        <li class="active"><a href="return-ticket.html"><i class="fa fa-link"></i> <span>退票</span></a></li>
+        <li class="active"><a href="#"><i class="fa fa-link"></i> <span>我的保险</span></a></li>
+        <li class="active"><a href="#"><i class="fa fa-link"></i> <span>客运营业站站点</span></a></li>
+        <li class="active"><a href="#"><i class="fa fa-link"></i> <span>客票代售点查询</span></a></li>
+      </ul>
+      <!-- /.sidebar-menu -->
+    </section>
+    <!-- /.sidebar -->
+  </aside>
+
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <h1>
+        购票
+        <small>小黄牛车票购票中心</small>
+      </h1>
+      <br/>
+      <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> 选项</a></li>
+        <li class="active">Here</li>
+      </ol>
+    </section>
+
+    <!-- Main content -->
+    <section class="content container-fluid">
+        <div class="item_cont block">
+            <form target="_blank" method="post"  id="form0" action="list.html">
+                <ul>
+                    <li class="input_city">
+                        <input name='from' id="train_from"  onBlur="hideCity();"  onfocus="showCity('train_from');" type="text" value="请输入出发城市"/>
+                        <div class="hotcity_txt">出发地</div>
+                        <div class="chage"></div>
+                    </li>
+                    <li class="input_date huochepiaoDate">  
+                        <input name='date' id="wangdate" type="date"  class="txt trainCalendar" />                   
+                        <em class="date_ico"></em>               
+                        <div class="date_txt" onclick="$('#wangdate').focus();" id="dc_date_ico">出发日</div>
+                    </li>
+                    <li class="input_city">
+                        <input name='to' id="train_to"  onBlur="hideCity();" onfocus="showCity('train_to');" type="text" value="请输入到达城市"  />
+                        <div class="hotcity_txt">到达地</div>
+                    </li>
+                </ul>
+                <input type="submit" class="index_btn btn_orage" id="single_journey" value="搜索" >
+            </form>
+        </div>
+        
+        <div>
+          
+
+        </div>
+                       
+    </section>
+    <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->
+
+  <!-- Main Footer -->
+  <footer class="main-footer">
+    <!-- To the right -->
+    <div class="pull-right hidden-xs">
+      所有
+    </div>
+    <!-- Default to the left -->
+    <strong>Copyright &copy; 2016 <a href="#">Company</a>.</strong> All rights reserved.
+  </footer>
+
+  <!-- Control Sidebar -->
+  <aside class="control-sidebar control-sidebar-dark">
+    <!-- Create the tabs -->
+    <ul class="nav nav-tabs nav-justified control-sidebar-tabs">
+      <li class="active"><a href="#control-sidebar-home-tab" data-toggle="tab"><i class="fa fa-home"></i></a></li>
+      <li><a href="#control-sidebar-settings-tab" data-toggle="tab"><i class="fa fa-gears"></i></a></li>
+    </ul>
+    <!-- Tab panes -->
+
+          <!-- /.form-group -->
+        </form>
+      </div>
+      <!-- /.tab-pane -->
+    </div>
+  </aside>
+  <!-- /.control-sidebar -->
+  <!-- Add the sidebar's background. This div must be placed
+  immediately after the control sidebar -->
+  <div class="control-sidebar-bg"></div>
+</div>
+
+<div  id="cityList" style="display:none; ">
+                <div class="tip_city">
+                    <p>支持中文/拼音/简拼输入</p>
+                    <a href="javascript:void(0)" class="tip_city_close">关闭</a>
+                    <span class="now">热门</span>
+                    <span>ABCD</span>
+                    <span>EFGH</span>
+                    <span>JKLM</span>
+                    <span>NOPQRS</span>
+                    <span>TUVWX</span>
+                    <span>YZ</span>
+                    <ul>
+                        <li><a href="javascript:void(0);">北京</a></li>
+                        <li><a href="javascript:void(0);">上海</a></li>
+                        <li><a href="javascript:void(0);">广州</a></li>
+                        <li><a href="javascript:void(0);">深圳</a></li>
+                        <li><a href="javascript:void(0);">杭州</a></li>
+                        <li><a href="javascript:void(0);">苏州</a></li>
+                        <li><a href="javascript:void(0);">南京</a></li>
+                        <li><a href="javascript:void(0);">天津</a></li>
+                        <li><a href="javascript:void(0);">成都</a></li>
+                        <li><a href="javascript:void(0);">重庆</a></li>
+                        <li><a href="javascript:void(0);">西安</a></li>
+                        <li><a href="javascript:void(0);">郑州</a></li>
+                        <li><a href="javascript:void(0);">长沙</a></li>
+                        <li><a href="javascript:void(0);">武汉</a></li>
+                        <li><a href="javascript:void(0);">南昌</a></li>
+                        <li><a href="javascript:void(0);">青岛</a></li>
+                        <li><a href="javascript:void(0);">济南</a></li>
+                        <li><a href="javascript:void(0);">大连</a></li>
+                        <li><a href="javascript:void(0);">沈阳</a></li>
+                        <li><a href="javascript:void(0);">长春</a></li>
+                        <li><a href="javascript:void(0);">哈尔滨</a></li>
+                        <li><a href="javascript:void(0);">洛阳</a></li>
+                        <li><a href="javascript:void(0);">兰州</a></li>
+                        <li><a href="javascript:void(0);">合肥</a></li>
+                        <li><a href="javascript:void(0);">太原</a></li>
+                        <li><a href="javascript:void(0);">海口</a></li>
+                        <li><a href="javascript:void(0);">南宁</a></li>
+                        <li><a href="javascript:void(0);">福州</a></li>
+                        <li><a href="javascript:void(0);">昆明</a></li>
+                        <li><a href="javascript:void(0);">乌鲁木齐</a></li>
+                    </ul>
+                </div>
+
+                <div class="tip_city2">
+                    <li><span>甘谷(GG)</span><label>gangu</label></li>
+                    <li><span>甘谷(GG)</span><label>gangu</label></li>
+                    <li><span>甘谷(GG)</span><label>gangu</label></li>
+                </div>
+            </div>
+        </div>
+
+
+<!-- ./wrapper -->
+
+<!-- REQUIRED JS SCRIPTS -->
+
+<!-- jQuery 3 -->
+<script src="bower_components/jquery/dist/jquery.min.js"></script>
+<!-- Bootstrap 3.3.7 -->
+<script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<!-- AdminLTE App -->
+<script src="dist/js/adminlte.min.js"></script>
+
+<!-- Optionally, you can add Slimscroll and FastClick plugins.
+     Both of these plugins are recommended to enhance the
+     user experience. -->
+</body>
+</html>

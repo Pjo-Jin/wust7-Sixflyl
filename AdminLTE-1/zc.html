@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>注册</title>
+		<link rel="stylesheet" type="text/css" href="./css/login.css"/>
+		<script type="text/javascript" src="./js/login.js"></script>
+		<script type="text/javascript">
+			function loadXMLDoc()
+			{
+				var xmlhttp;
+				if (window.XMLHttpRequest)
+			    {// code for IE7+, Firefox, Chrome, Opera, Safari
+ 				 xmlhttp=new XMLHttpRequest();
+	 		    }
+	 			else
+	 			{// code for IE6, IE5
+	 			xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+	 			}
+	 			xmlhttp.onreadystatechange=function()
+		 	    {
+		 			if (xmlhttp.readyState==4 && xmlhttp.status==200)
+		 		    {
+		 			    document.getElementById("myDiv").innerHTML=xmlhttp.responseText;
+		 			}
+		 	    }
+		 		xmlhttp.open("GET","/ajax/demo_get.asp",true);
+		 		xmlhttp.send();
+		 	}
+        </script>
+	</head>
+	<body>
+		<div id="append"></div>
+
+		<div class="w980 ClearFix1">
+			<div class="logo_box ClearFix">
+				
+				<div class="login_b_r ClearFix">
+					<div class="loginul ClearFix">
+					    <div class="login_h2 ClearFix">
+						    <h2>用户注册</h2>
+						    <div class="lognrtop">
+								已有账号<a href="login1.html">在此登录</a>
+							</div>
+						</div>
+					  <div class="co"> 
+                        <div class="form">
+                        <form id="register_form" method="post" action="">
+                            <div class="item">
+                                <input placeholder="请输入用户名（必须是由6-18个英文字母组成）" class="itxt"id="username" name="username" value="" onblur="check1()" >
+                                <div class="err_box">
+                                    <div class="err_msg2" style="display: show; color:red " id="error_name">
+									</div>
+                                </div>
+                            </div>
+                         
+                            <div class="item item2">
+                                <input placeholder="请输入密码（必须是由6-20的英文或数字字符串组成）" tabindex="4" maxlength="20" class="itxt" name="password" id="password" type="password" value="" onblur="check2()" >
+                                <div class="err_box">
+                                    <div class="err_msg2" style="display: show; color:red " id="error_password">
+									</div>
+                                </div>
+                            </div>
+
+                            <div class="item item2">
+                                <input placeholder="请再次输入密码" class="itxt" tabindex="5" maxlength="20" name="password_confirm" id="password_confirm" type="password" value="" onblur="check3()"  >
+                                <div class="err_box">
+                                    <div class="err_msg2" style="display: show; color:red " id="error_password_confirm">
+									</div>
+                                </div>
+                            </div>
+                           <!-- <div class="item item3">
+                                <input placeholder="验证码" autocomplete="off" tabindex="6" maxlength="4" size="10" class="itxt itxt_yzm" name="code" id="code" type="text">
+                                <div class="err_box">
+                                    <div class="err_msg2" style="display: none;" id="error_captcha">请输入右侧验证码</div>
+                                </div>
+                            </div>-->
+                            <div class="item item5">
+                                <div class="login-btn">
+                                    <a id="loginsubmit" tabindex="7" class="btn-img btn-entry" href="register_succeed.html">立即注册</a>
+
+                                    <button type="button" onclick="loadXMLDoc()">请求数据</button>
+                                    <div id="myDiv"></div>
+
+
+                                </div>
+                                <div class="agree">
+                                    <input class="jdcheckbox" tabindex="8" name="agree" id="agree" checked="checked" type="checkbox">
+                                    <label for="autoLogin">注册即表示同意系统<span><a href="" target="_blank">《用户服务协议》</a></span>条款</label>
+                                </div>
+                            </div>
+                        </form>
+                        </div>
+					   </div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+<script>
+   function check1(){
+     var u = document.getElementById("username");
+     var reg = /^[a-zA-Z][a-zA-Z\u4E00-\u9FA5]{5,17}$/;
+     if(!reg.test(u.value))
+     {
+       document.getElementById("error_name").innerHTML="用户名必须是长度位6-18的英文字符串";
+     }
+     else
+     {
+       document.getElementById("error_name").innerHTML="";
+     }
+   }   
+
+   function check2(){
+     var p = document.getElementById("password");
+     var reg1 = /^[a-zA-Z0-9]{6,20}$/;
+     if(!reg1.test(p.value))
+     {
+       document.getElementById("error_password").innerHTML="密码必须是长度位6-20的英文或数字字符串";
+     }
+     else
+     {
+       document.getElementById("error_password").innerHTML="";
+     }
+   } 
+
+   function check3(){
+     var p1 = document.getElementById("password_confirm");
+	 var p = document.getElementById("password");
+     if(p.value!= p1.value)
+     {
+       document.getElementById("error_password_confirm").innerHTML="两次密码不一致";
+     }
+     else
+     {
+       document.getElementById("error_password_confirm").innerHTML="";
+     }
+   }
+</script>
+
+
+
+	</body>
+</html>
